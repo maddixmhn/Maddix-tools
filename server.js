@@ -1,4 +1,5 @@
 const http = require('http');
+const https = require('https');
 const fs = require('fs');
 const path = require('path');
 const { spawn } = require('child_process');
@@ -61,6 +62,78 @@ const server = http.createServer((req, res) => {
   if (req.url === '/api/shells' && req.method === 'GET') {
     res.writeHead(200, { 'Content-Type': 'application/json' });
     res.end(JSON.stringify({ shells: getAvailableShells(), platform: process.platform }));
+    return;
+  }
+  if (req.url === '/api/grok' && req.method === 'POST') {
+    let body = '';
+    req.on('data', (chunk) => { body += chunk; });
+    req.on('end', () => {
+      let data = {};
+      try { data = JSON.parse(body || '{}'); } catch(e) {}
+      const key = (data.key || '').trim();
+      if (!key) {
+        res.writeHead(400, { 'Content-Type': 'application/json' });
+        res.end(JSON.stringify({ error: 'Missing API key' }));
+        return;
+      }
+      const payload = JSON.stringify({
+        model: data.model || 'grok-4.5',
+        messages: data.messages || [],
+        stream: false,
+        temperature: 0.7,
+        max_tokens: 1200,
+      });
+      const upstream = https.request('https://api.x.ai/v1/chat/completions', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': 'Bearer ' + key,
+          'Content-Length': Buffer.byteLength(payload),
+        },
+      }, (up) => {
+        let upBody = '';
+        up.on('data', (c) => { upBody += c; });
+        up.on('end', () => {
+          res.writeHead(up.statusCode || 502, { 'Content-Type': 'application/json' });
+          res.end(upBody);
+        });
+      });
+      upstream.on('error', (e) => {
+        res.writeHead(502, { 'Content-Type': 'application/json' });
+        res.end(JSON.stringify({ error: e.message }));
+      });
+      upstream.end(payload);
+    });
+    return;
+  }
+  if (req.url === '/api/ai-router' && req.method === 'POST') {
+    let body = '';
+    req.on('data', (chunk) => { body += chunk; });
+    req.on('end', () => {
+      let data = {};
+      try { data = JSON.parse(body || '{}'); } catch(e) {}
+      const url = (data.url || '').trim();
+      if (!/^https:\/\//i.test(url)) {
+        res.writeHead(400, { 'Content-Type': 'application/json' });
+        res.end(JSON.stringify({ error: 'Invalid upstream URL' }));
+        return;
+      }
+      const payload = typeof data.body === 'string' ? data.body : JSON.stringify(data.body || {});
+      const headers = Object.assign({ 'Content-Length': Buffer.byteLength(payload) }, data.headers || {});
+      const upstream = https.request(url, { method: 'POST', headers }, (up) => {
+        let upBody = '';
+        up.on('data', (c) => { upBody += c; });
+        up.on('end', () => {
+          res.writeHead(up.statusCode || 502, { 'Content-Type': 'application/json' });
+          res.end(upBody);
+        });
+      });
+      upstream.on('error', (e) => {
+        res.writeHead(502, { 'Content-Type': 'application/json' });
+        res.end(JSON.stringify({ error: e.message }));
+      });
+      upstream.end(payload);
+    });
     return;
   }
   let filePath = path.join(__dirname, req.url === '/' ? 'index.html' : req.url);

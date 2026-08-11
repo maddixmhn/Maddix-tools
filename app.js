@@ -22,6 +22,7 @@ const i18n = {
     tagline: 'Browser-based security workstation',
     navHome: 'Home',
     navTools: 'Tools',
+    navRouter: 'AI Router',
     navAbout: 'About',
     search: 'Search tools...',
     footer: 'Built by Nima Ha',
@@ -41,12 +42,16 @@ const i18n = {
       'terminal-ngrok-desc': 'Real browser terminal with WebSocket, multi-shell, and ngrok tunnel',
       'google-dorks': 'Google Dorks',
       'google-dorks-desc': '500+ Google dork queries across 31 categories for penetration testing',
+      'osint-arsenal': 'OSINT Arsenal',
+      'osint-arsenal-desc': '753+ OSINT tools in 50 categories with one-command installers',
       'fsociety-tools': 'Fsociety Toolkit',
       'fsociety-tools-desc': 'Complete fsociety command reference with 44 tools',
       'msf-commands': 'MSF & Kali Commands',
       'msf-commands-desc': 'Metasploit and Kali Linux command reference with payload generator',
       'tunnel-tools': 'Tunnel Tools',
       'tunnel-tools-desc': '15 tunnel/proxy tools: ngrok, Cloudflare Tunnel, bore, frp, chisel, and more',
+      'ngrok-tunnel': 'Ngrok Tunnel',
+      'ngrok-tunnel-desc': 'Termux bash script to expose local servers via ngrok public URLs',
       'env-wizard': 'Env Wizard',
       'env-wizard-desc': 'Build custom terminal environments with shell, tools, ngrok, and auth',
       'whois-lookup': 'WHOIS Lookup',
@@ -220,6 +225,7 @@ const i18n = {
     tagline: 'ایستگاه کاری امنیتی مبتنی بر مرورگر',
     navHome: 'خانه',
     navTools: 'ابزارها',
+    navRouter: 'روتر هوش مصنوعی',
     navAbout: 'درباره',
     search: 'جستجوی ابزارها...',
     footer: 'ساخته شده توسط Nima Ha',
@@ -239,12 +245,16 @@ const i18n = {
       'terminal-ngrok-desc': 'ترمینال واقعی با WebSocket، شل‌های چندگانه و تونل ngrok',
       'google-dorks': 'گوگل دورک',
       'google-dorks-desc': '۵۰۰+ کوئری گوگل دورک در ۳۱ دسته برای تست نفوذ',
+      'osint-arsenal': 'اسلحه‌خانه OSINT',
+      'osint-arsenal-desc': 'بیش از ۷۵۳ ابزار OSINT در ۵۰ دسته با نصب یک‌دستوری',
       'fsociety-tools': 'ابزارهای Fsociety',
       'fsociety-tools-desc': 'راهنمای کامل ابزارهای fsociety با ۴۴ ابزار',
       'msf-commands': 'دستورات MSF و Kali',
       'msf-commands-desc': 'راهنمای دستورات Metasploit و Kali لینوکس با تولیدکننده پیلود',
       'tunnel-tools': 'ابزارهای تونل',
       'tunnel-tools-desc': '۱۵ ابزار تونل و پروکسی: ngrok، Cloudflare Tunnel، bore، frp، chisel و بیشتر',
+      'ngrok-tunnel': 'تونل Ngrok',
+      'ngrok-tunnel-desc': 'اسکریپت Bash ترموکس برای اتصال سرورهای محلی با URL عمومی ngrok',
       'env-wizard': 'ویزارد محیط',
       'env-wizard-desc': 'ساخت محیط ترمینال سفارشی با شل، ابزار، ngrok و احراز هویت',
       'whois-lookup': 'جستجوی WHOIS',
@@ -436,7 +446,8 @@ const TOOLS = [
   { id:'ip-scanner',     cat:'recon' },    { id:'ip-info',       cat:'recon' },
   { id:'port-scanner',   cat:'recon' },    { id:'mega-scanner',  cat:'recon' },
   { id:'google-dorks',   cat:'recon' },    { id:'sni-spoof',     cat:'recon' },
-  { id:'whois-lookup',   cat:'recon' },    { id:'subdomain-finder',cat:'recon' },
+  { id:'osint-arsenal',  cat:'recon' },    { id:'whois-lookup',  cat:'recon' },
+  { id:'subdomain-finder',cat:'recon' },
   // Payload
   { id:'linux-cmds',     cat:'payload' },  { id:'powershell-cmds',cat:'payload' },
   { id:'tty-shell',      cat:'payload' },  { id:'file-transfer', cat:'payload' },
@@ -444,6 +455,7 @@ const TOOLS = [
   // System
   { id:'terminal-ngrok', cat:'system' }, { id:'env-wizard', cat:'system' },
   { id:'tunnel-tools',   cat:'system' },
+  { id:'ngrok-tunnel',   cat:'system' },
   // Crypto
   { id:'encoder',        cat:'crypto' },   { id:'hash-generator',cat:'crypto' },
   { id:'aes-crypto',     cat:'crypto' },   { id:'uuid-gen',      cat:'crypto' },
@@ -510,6 +522,7 @@ function render() {
         <div class="jn-desktop-only" style="display:flex;align-items:center;gap:2px;margin-left:12px" id="navLinks">
           <a href="#" class="nav-link" data-section="home"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:middle;margin-right:4px"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>${tr('navHome')}</a>
           <a href="#" class="nav-link" data-section="tools"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:middle;margin-right:4px"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>${tr('navTools')}</a>
+          <a href="#" class="nav-link" data-section="ai-router"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:middle;margin-right:4px"><path d="m16 3 4 4-4 4"/><path d="M20 7H4"/><path d="m8 21-4-4 4-4"/><path d="M4 17h16"/></svg>${tr('navRouter')}</a>
           <a href="#" class="nav-link" data-section="about"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:middle;margin-right:4px"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>${tr('navAbout')}</a>
         </div>
         <div style="margin-left:auto;display:flex;align-items:center;gap:6px">
@@ -520,6 +533,11 @@ function render() {
     </nav>
 
     <main id="mainContent" class="jn-container" style="padding-top:16px">
+      <!-- AI Router Dashboard -->
+      <section id="section-ai-router" class="section" style="padding:16px 0">
+        <div id="aiRouterMount" style="width:100%"></div>
+      </section>
+
       <!-- Home Section -->
       <section id="section-home" class="section" style="min-height:40vh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:64px 16px">
         <h1 id="heroTitle" style="font-size:clamp(2rem,5vw,3.5rem);font-weight:700;margin:0 0 8px;letter-spacing:-.03em;display:flex;align-items:center;justify-content:center;gap:12px"><svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>${tr('brand')}</h1>
@@ -559,6 +577,7 @@ function render() {
       <nav style="display:flex;flex-direction:column;gap:4px">
         <a href="#" class="nav-link mobile-nav-link" data-section="home" style="display:flex;align-items:center;gap:10px;padding:10px 12px"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>${tr('navHome')}</a>
         <a href="#" class="nav-link mobile-nav-link" data-section="tools" style="display:flex;align-items:center;gap:10px;padding:10px 12px"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>${tr('navTools')}</a>
+        <a href="#" class="nav-link mobile-nav-link" data-section="ai-router" style="display:flex;align-items:center;gap:10px;padding:10px 12px"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m16 3 4 4-4 4"/><path d="M20 7H4"/><path d="m8 21-4-4 4-4"/><path d="M4 17h16"/></svg>${tr('navRouter')}</a>
         <a href="#" class="nav-link mobile-nav-link" data-section="about" style="display:flex;align-items:center;gap:10px;padding:10px 12px"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>${tr('navAbout')}</a>
       </nav>
     </div>
@@ -574,12 +593,39 @@ function render() {
       <div id="drawerBody" style="flex:1;overflow-y:auto;padding:16px;min-height:200px"></div>
     </div>
 
+    <!-- AI Assistant -->
+    <div id="aiFab" aria-label="AI Assistant" style="position:fixed;bottom:20px;right:16px;z-index:90;width:54px;height:54px;border-radius:50%;background:linear-gradient(135deg,#6d28d9,#7c3aed);color:#fff;display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:1.5rem;box-shadow:0 8px 24px rgba(0,0,0,.3);border:none;outline:none;transition:transform .15s ease">🤖</div>
+    <div id="aiPanel" class="hidden" style="position:fixed;bottom:16px;right:16px;z-index:91;width:min(92vw,380px);height:min(82vh,560px);display:flex;flex-direction:column;background:var(--card);border:1px solid var(--border);border-radius:16px;box-shadow:0 20px 60px rgba(0,0,0,.3);overflow:hidden">
+      <div style="display:flex;align-items:center;gap:10px;padding:12px 14px;border-bottom:1px solid var(--border);background:linear-gradient(135deg,#6d28d9,#7c3aed);color:#fff;flex-shrink:0">
+        <span style="font-size:1.25rem">🤖</span>
+        <div style="flex:1;min-width:0">
+          <div id="aiTitle" style="font-weight:600;font-size:.9375rem">دستیار هوش مصنوعی</div>
+          <div id="aiSub" style="font-size:.6875rem;opacity:.85">Grok · توسط xAI</div>
+        </div>
+        <button id="aiSettingsBtn" aria-label="Settings" style="background:none;border:none;color:#fff;cursor:pointer;font-size:1rem;padding:4px">⚙️</button>
+        <button id="aiCloseBtn" aria-label="Close" style="background:none;border:none;color:#fff;cursor:pointer;font-size:1rem;padding:4px">✕</button>
+      </div>
+      <div id="aiMessages" style="flex:1;overflow-y:auto;padding:14px;display:flex;flex-direction:column;gap:10px;background:var(--background)"></div>
+      <div id="aiSetup" class="hidden" style="padding:12px;border-top:1px solid var(--border);display:flex;flex-direction:column;gap:8px;background:var(--card);flex-shrink:0">
+        <input id="aiKeyInput" type="password" autocomplete="off" spellcheck="false" placeholder="کلید API گروک (xAI)" style="width:100%;box-sizing:border-box;padding:8px 10px;border-radius:8px;border:1px solid var(--input);background:var(--background);color:var(--foreground);font-size:.8125rem;outline:none">
+        <input id="aiModelInput" type="text" autocomplete="off" spellcheck="false" placeholder="Model (grok-4.5)" style="width:100%;box-sizing:border-box;padding:8px 10px;border-radius:8px;border:1px solid var(--input);background:var(--background);color:var(--foreground);font-size:.8125rem;outline:none">
+        <div style="display:flex;gap:8px">
+          <button id="aiSaveBtn" class="btn" style="flex:1;padding:.5rem 1rem;font-size:.8125rem;border-radius:8px;cursor:pointer">ذخیره</button>
+          <button id="aiClearBtn" class="btn btn-ghost" style="padding:.5rem 1rem;font-size:.8125rem;border-radius:8px;cursor:pointer">پاک کردن گفتگو</button>
+        </div>
+      </div>
+      <div style="display:flex;gap:8px;padding:12px;border-top:1px solid var(--border);background:var(--card);flex-shrink:0">
+        <input id="aiInput" type="text" autocomplete="off" spellcheck="false" placeholder="پیام خود را بنویسید..." style="flex:1;min-width:0;padding:9px 12px;border-radius:9999px;border:1px solid var(--input);background:var(--background);color:var(--foreground);font-size:.875rem;outline:none;box-sizing:border-box">
+        <button id="aiSendBtn" aria-label="Send" style="width:38px;height:38px;flex-shrink:0;border-radius:50%;border:none;background:linear-gradient(135deg,#6d28d9,#7c3aed);color:#fff;cursor:pointer;font-size:1rem;display:flex;align-items:center;justify-content:center">➤</button>
+      </div>
+    </div>
 
   `;
 
   bindEvents();
   renderToolGrid();
   applyDir();
+  if (window.MaddixAI) window.MaddixAI.bind();
 }
 
 // ── Tool Grid ──────────────────────────────────────────
@@ -851,6 +897,7 @@ function applyDir() {
   document.querySelectorAll('[lang]').forEach(el => {
     el.style.display = el.getAttribute('lang') === state.lang ? '' : 'none';
   });
+  if (window.MaddixAI) window.MaddixAI.setLang(state.lang);
 }
 
 // ── Prefs ──────────────────────────────────────────────
@@ -885,6 +932,7 @@ function rerender() {
     let label = '';
     if (s === 'home') label = tr('navHome');
     else if (s === 'tools') label = tr('navTools');
+    else if (s === 'ai-router') label = tr('navRouter');
     else if (s === 'about') label = tr('navAbout');
     if (!label) return;
     const svg = el.querySelector('svg');
@@ -910,6 +958,22 @@ function rerender() {
   if (aboutTitle) aboutTitle.textContent = state.lang==='fa'?'درباره مادیکس تولز':'About Maddix Tools';
   if (aboutDesc) aboutDesc.textContent = state.lang==='fa'?'مادیکس تولز یک ایستگاه کاری امنیتی مبتنی بر مرورگر است. شامل ابزارهای شناسایی، تولید پیلود، رمزنگاری، شبکه و اسکنر یکپارچه می‌باشد.':'Maddix Tools is a browser-based security workstation. Includes recon, payload, crypto, network, and unified scanner tools.';
   renderToolGrid();
+  mountAiRouter();
+}
+
+// ── AI Router mount ────────────────────────────────────
+async function mountAiRouter() {
+  const mount = document.getElementById('aiRouterMount');
+  if (!mount) return;
+  try {
+    const mod = await import('./tools/ai-router.js');
+    if (mod.default) {
+      mount.innerHTML = mod.default(state.lang);
+      if (mod.init) setTimeout(() => mod.init(state.lang), 0);
+    }
+  } catch(e) {
+    console.error('AI Router mount error:', e);
+  }
 }
 
 // ── Boot ───────────────────────────────────────────────
@@ -924,6 +988,8 @@ function boot() {
   }
   // Always remove loading screen
   removeLoading();
+  // Mount AI Router dashboard
+  mountAiRouter();
   // Watch OS theme
   window.matchMedia('(prefers-color-scheme:dark)').addEventListener('change', () => {
     if (state.theme === 'auto') applyTheme();
@@ -938,7 +1004,7 @@ function boot() {
       }
     });
   }, { threshold:0.3 });
-  ['home','tools','about'].forEach(id => {
+  ['ai-router','home','tools','about'].forEach(id => {
     const el = document.getElementById('section-'+id);
     if (el) observer.observe(el);
   });

@@ -1,9 +1,17 @@
 # Maddix Tools
 
 ## Run locally
+
+با Node.js (ترمینال واقعی + ابزارهای WebSocket):
 ```
 node server.js
 ```
+
+بدون Node.js (فقط فایل‌های استاتیک، پایتون کافیه):
+```
+python server.py
+```
+
 Then open http://localhost:3000
 
 ## Deploy to Cloudflare Pages
@@ -39,4 +47,11 @@ git push -u origin main
 - `app.js` - SPA روتینگ و منطق اصلی
 - `tools/` - 23 ابزار مجزا
 - `_redirects` - کانفیگ SPA برای Cloudflare Pages
-- `server.js` - سرور لوکال
+- `server.js` - سرور لوکال (Node)
+- `server.py` - سرور لوکال بدون Node (پایتون)
+- `ai-assistant.js` - ویدجت دستیار هوش مصنوعی (گروک) با پاسخ فارسی
+- `api/grok.js` - پروکسی گروک برای Vercel
+- `functions/api/grok.js` - پروکسی گروک برای Cloudflare Pages
+
+## دستیار هوش مصنوعی (گروک)
+ویدجت 🤖 پایین-راست صفحه. کلید API گروک را از ⚙️ داخل خود چت وارد کن (در localStorage ذخیره می‌شود). وقتی سایت فارسی است، سیستم‌پرامپت همیشه پاسخ فارسی را تحمیل می‌کند. درخواست از `/api/grok` می‌رود (پروکسی برای رفع CORS)؛ اگر پروکسی نبود مستقیم به `api.x.ai` می‌رود.
