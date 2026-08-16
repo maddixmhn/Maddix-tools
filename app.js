@@ -25,6 +25,9 @@ const i18n = {
     navRouter: 'AI Router',
     navAbout: 'About',
     search: 'Search tools...',
+    navGroupMain: 'Overview',
+    navGroupCats: 'Categories',
+    navAllTools: 'All tools',
     footer: 'Built by Nima Ha',
     categories: {
       'red-team': 'Red Team',
@@ -52,6 +55,8 @@ const i18n = {
       'tunnel-tools-desc': '15 tunnel/proxy tools: ngrok, Cloudflare Tunnel, bore, frp, chisel, and more',
       'ngrok-tunnel': 'Ngrok Tunnel',
       'ngrok-tunnel-desc': 'Termux bash script to expose local servers via ngrok public URLs',
+      'scenario-builder': 'Scenario Builder',
+      'scenario-builder-desc': 'Pick a project type & objective — get a phase-by-phase pentest scenario with tools',
       'env-wizard': 'Env Wizard',
       'env-wizard-desc': 'Build custom terminal environments with shell, tools, ngrok, and auth',
       'whois-lookup': 'WHOIS Lookup',
@@ -228,6 +233,9 @@ const i18n = {
     navRouter: 'روتر هوش مصنوعی',
     navAbout: 'درباره',
     search: 'جستجوی ابزارها...',
+    navGroupMain: 'منوی اصلی',
+    navGroupCats: 'دسته‌بندی‌ها',
+    navAllTools: 'همه ابزارها',
     footer: 'ساخته شده توسط Nima Ha',
     categories: {
       'red-team': 'تیم قرمز',
@@ -255,6 +263,8 @@ const i18n = {
       'tunnel-tools-desc': '۱۵ ابزار تونل و پروکسی: ngrok، Cloudflare Tunnel، bore، frp، chisel و بیشتر',
       'ngrok-tunnel': 'تونل Ngrok',
       'ngrok-tunnel-desc': 'اسکریپت Bash ترموکس برای اتصال سرورهای محلی با URL عمومی ngrok',
+      'scenario-builder': 'سازنده سناریو',
+      'scenario-builder-desc': 'نوع پروژه و هدف را انتخاب کن — سناریوی مرحله‌به‌مرحله پنتست با ابزارها',
       'env-wizard': 'ویزارد محیط',
       'env-wizard-desc': 'ساخت محیط ترمینال سفارشی با شل، ابزار، ngrok و احراز هویت',
       'whois-lookup': 'جستجوی WHOIS',
@@ -436,6 +446,7 @@ const TOOLS = [
   { id:'sqli-payloads',  cat:'red-team' }, { id:'lfi-payloads',   cat:'red-team' },
   { id:'msf-venom',      cat:'red-team' }, { id:'msf-commands',   cat:'red-team' },
   { id:'fsociety-tools', cat:'red-team' },
+  { id:'scenario-builder', cat:'red-team' },
   // Blue Team
   { id:'network-checker',cat:'blue-team' }, { id:'network-diag',  cat:'blue-team' },
   { id:'dns-hunter',     cat:'blue-team' }, { id:'cdn-finder',    cat:'blue-team' },
@@ -510,60 +521,90 @@ async function loadTool(id) {
 function render() {
   const app = document.getElementById('app');
   app.innerHTML = `
-    <nav id="navbar" style="position:fixed;top:env(safe-area-inset-top);left:0;right:0;z-index:40;height:56px;border-bottom:1px solid var(--border);background:color-mix(in srgb,var(--background) 80%,transparent);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);transition:transform .3s">
-      <div style="display:flex;height:100%;align-items:center;gap:8px;padding:0 16px;max-width:1600px;margin:0 auto">
+    <nav id="navbar" style="position:sticky;top:0;z-index:100;height:var(--header);background:color-mix(in srgb,var(--page-bg) 92%,transparent);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);border-bottom:1px solid var(--border);transition:transform .3s">
+      <div class="topbar-inner">
         <div style="display:flex;align-items:center;gap:6px">
-          <button id="hamburgerBtn" class="btn btn-icon btn-ghost jn-mobile-only" aria-label="Menu" style="font-size:1.25rem;padding:6px">☰</button>
+          <button id="hamburgerBtn" class="btn btn-icon btn-ghost jn-sidebar-hidden" aria-label="Menu" style="font-size:1.25rem;padding:6px">☰</button>
           <a href="#" id="logoBtn" style="display:inline-flex;align-items:center;gap:8px;padding:4px 8px;border-radius:8px;font-size:1.05rem;font-weight:600;text-decoration:none;color:var(--foreground);white-space:nowrap">
             <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
             <span class="tracking-tight"><span style="font-weight:700">Maddix</span> <span style="font-weight:300;opacity:.8">Tools</span></span>
           </a>
         </div>
-        <div class="jn-desktop-only" style="display:flex;align-items:center;gap:2px;margin-left:12px" id="navLinks">
-          <a href="#" class="nav-link" data-section="home"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:middle;margin-right:4px"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>${tr('navHome')}</a>
-          <a href="#" class="nav-link" data-section="tools"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:middle;margin-right:4px"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>${tr('navTools')}</a>
-          <a href="#" class="nav-link" data-section="ai-router"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:middle;margin-right:4px"><path d="m16 3 4 4-4 4"/><path d="M20 7H4"/><path d="m8 21-4-4 4-4"/><path d="M4 17h16"/></svg>${tr('navRouter')}</a>
-          <a href="#" class="nav-link" data-section="about"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:middle;margin-right:4px"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>${tr('navAbout')}</a>
-        </div>
-        <div style="margin-left:auto;display:flex;align-items:center;gap:6px">
-          <button id="themeBtn" class="btn btn-icon btn-ghost" aria-label="Toggle theme" style="font-size:1.1rem;padding:6px">${state.isDark?'☀️':'🌙'}</button>
-          <button id="langBtn" class="btn btn-ghost" style="font-size:.8125rem;padding:.375rem .625rem;white-space:nowrap">${tr('langSwitch')}</button>
+        <button id="topbarSearchBtn" class="topbar-search" aria-label="${tr('search')}" title="${tr('search')}">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+          <span class="ts-label">${tr('search')}</span>
+          <span class="topbar-kbd">⌘K</span>
+        </button>
+        <div class="topbar-actions">
+          <div class="theme-switch" id="themeSwitch" role="switch" aria-checked="${state.isDark}" aria-label="Toggle theme" title="${state.lang==='fa'?'حالت تاریک/روشن':'Dark / light mode'}">
+            <span class="theme-switch-icons">
+              <svg class="theme-icon theme-icon-sun" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/></svg>
+              <svg class="theme-icon theme-icon-moon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg>
+            </span>
+            <span class="theme-switch-knob"></span>
+          </div>
+          <button id="langBtn" class="lang-btn" aria-label="${tr('langSwitch')}" title="${tr('langSwitch')}">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+            <span id="langBtnText" style="font-weight:600">${state.lang==='fa'?'FA':'EN'}</span>
+          </button>
+          <a href="https://github.com/nima-ha/Maddix-tools" target="_blank" rel="noopener" class="btn btn-ghost jn-desktop-only" style="font-size:.8125rem;padding:.375rem .75rem;white-space:nowrap">GitHub</a>
         </div>
       </div>
     </nav>
 
-    <main id="mainContent" class="jn-container" style="padding-top:16px">
+    <div class="layout">
+      <aside id="sidebar" class="sidebar" aria-label="Sidebar">
+        <nav>
+          <div class="side-group">${tr('navGroupMain')}</div>
+          <a href="#" class="nav-link side-link" data-section="ai-router"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0"><path d="m16 3 4 4-4 4"/><path d="M20 7H4"/><path d="m8 21-4-4 4-4"/><path d="M4 17h16"/></svg>${tr('navRouter')}</a>
+          <a href="#" class="nav-link side-link" data-section="home"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>${tr('navHome')}</a>
+          <a href="#" class="nav-link side-link" data-section="tools"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>${tr('navTools')}</a>
+          <a href="#" class="nav-link side-link" data-section="about"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>${tr('navAbout')}</a>
+
+          <div class="side-group">${tr('navGroupCats')}</div>
+          <button type="button" class="side-cat" data-cat=""><span>${CATEGORY_EMOJI.all||'🧰'}</span><span class="side-cat-label">${tr('navAllTools')}</span><span class="side-cat-count">${TOOLS.length}</span></button>
+          ${CATEGORIES.map(c => `<button type="button" class="side-cat" data-cat="${c}"><span>${CATEGORY_EMOJI[c]}</span><span class="side-cat-label">${tr('categories.'+c)}</span><span class="side-cat-count">${TOOLS.filter(t=>t.cat===c).length}</span></button>`).join('')}
+        </nav>
+      </aside>
+
+    <main id="mainContent" class="main-content" style="padding-top:16px">
       <!-- AI Router Dashboard -->
       <section id="section-ai-router" class="section" style="padding:16px 0">
         <div id="aiRouterMount" style="width:100%"></div>
       </section>
 
       <!-- Home Section -->
-      <section id="section-home" class="section" style="min-height:40vh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:64px 16px">
-        <h1 id="heroTitle" style="font-size:clamp(2rem,5vw,3.5rem);font-weight:700;margin:0 0 8px;letter-spacing:-.03em;display:flex;align-items:center;justify-content:center;gap:12px"><svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>${tr('brand')}</h1>
-        <p id="heroTagline" style="font-size:1.125rem;color:var(--muted-foreground);margin:0 0 32px;max-width:500px">${tr('tagline')}</p>
+      <section id="section-home" class="section" style="min-height:55vh;display:flex;flex-direction:column;justify-content:center;align-items:flex-start;text-align:left;padding:56px 4px">
+        <div class="hero-chip" id="heroChip"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="var(--success)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg><span id="heroChipText">${state.lang==='fa'?'ایستگاه کاری امنیتی مبتنی بر مرورگر':'Browser-based security workstation'}</span></div>
+        <h1 id="heroTitle" style="font-size:clamp(2.25rem,4vw,3rem);font-weight:900;margin:0 0 16px;letter-spacing:-.03em;display:flex;align-items:center;gap:14px;scroll-margin-top:calc(var(--header) + 2rem)"><svg width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="var(--action)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>${tr('brand')}</h1>
+        <p id="heroTagline" style="font-size:1.125rem;color:var(--muted-foreground);margin:0 0 32px;max-width:540px;line-height:1.7">${state.lang==='fa'?'مجموعه‌ای از ابزارهای شناسایی، تولید پیلود، رمزنگاری، شبکه و ابزارهای کاربردی — همگی مستقیم در مرورگر.':'A collection of recon, payload, crypto, networking and utility tools — right in your browser.'}</p>
         <div style="position:relative;width:100%;max-width:480px">
-          <input id="searchInput" type="search" placeholder="${tr('search')}" style="width:100%;padding:12px 16px;border-radius:9999px;border:1px solid var(--input);background:var(--card);color:var(--foreground);font-size:1rem;outline:none;box-sizing:border-box;box-shadow:0 2px 8px rgba(0,0,0,.06)">
+          <input id="searchInput" type="search" placeholder="${tr('search')}" style="width:100%;padding:12px 16px;border-radius:8px;border:1px solid var(--input);background:var(--card);color:var(--foreground);font-size:1rem;outline:none;box-sizing:border-box;box-shadow:0 1px 2px rgba(0,0,0,.04)">
         </div>
       </section>
 
       <!-- Tools Section -->
-      <section id="section-tools" class="section">
+      <section id="section-tools" class="section" style="padding:32px 0 16px">
+        <div class="mono" style="font-size:.6875rem;text-transform:uppercase;letter-spacing:.04em;color:var(--muted-foreground);margin-bottom:8px">${state.lang==='fa'?'ابزارها':'Tools'}</div>
+        <h2 id="toolsSectionTitle" class="section-title" style="font-size:2.25rem;font-weight:900;letter-spacing:-.02em;margin:0 0 4px">${state.lang==='fa'?'ابزارها':'All Tools'}</h2>
+        <p id="toolsSectionDesc" class="section-desc" style="color:var(--muted-foreground);margin:0 0 24px;font-size:.9375rem;max-width:600px">${state.lang==='fa'?'ابزارهای شبکه، پیلود، رمزنگاری و کاربردی را مرور کنید.':'Browse networking, payload, crypto and utility tools.'}</p>
         <div style="display:flex;flex-wrap:wrap;gap:8px;margin-bottom:24px" id="categoryFilters">
           <button class="btn cat-filter active" data-cat="">${state.lang==='fa'?'همه':'All'}</button>
           ${CATEGORIES.map(c => `<button class="btn cat-filter" data-cat="${c}">${CATEGORY_EMOJI[c]} ${tr('categories.'+c)}</button>`).join('')}
         </div>
-        <div id="toolGrid" class="grid grid-cols-1" style="grid-template-columns:repeat(auto-fill,minmax(260px,1fr))"></div>
+        <div id="toolGrid" class="grid grid-cols-1" style="grid-template-columns:repeat(auto-fill,minmax(240px,1fr))"></div>
         <div id="noResults" class="hidden" style="text-align:center;padding:48px 16px;color:var(--muted-foreground)">${state.lang==='fa'?'ابزاری یافت نشد':'No tools found'}</div>
       </section>
 
       <!-- About Section -->
-      <section id="section-about" class="section" style="padding:32px 16px">
-        <h2 class="section-title" id="aboutTitle">${state.lang==='fa'?'درباره مادیکس تولز':'About Maddix Tools'}</h2>
-        <p id="aboutDesc" style="color:var(--muted-foreground);max-width:600px;line-height:1.6">${state.lang==='fa'?'مادیکس تولز یک ایستگاه کاری امنیتی مبتنی بر مرورگر است. این مجموعه شامل ابزارهای شناسایی، تولید پیلود، رمزنگاری، شبکه و ابزارهای کاربردی می‌باشد.':'Maddix Tools is a browser-based security workstation. Includes reconnaissance, payload generation, cryptography, networking, and utility tools.'}</p>
+      <section id="section-about" class="section" style="padding:32px 0">
+        <div class="mono" style="font-size:.6875rem;text-transform:uppercase;letter-spacing:.04em;color:var(--muted-foreground);margin-bottom:8px">${state.lang==='fa'?'اطلاعات':'About'}</div>
+        <h2 class="section-title" id="aboutTitle" style="font-size:2.25rem;font-weight:900;letter-spacing:-.02em;margin:0 0 12px">${state.lang==='fa'?'درباره مادیکس تولز':'About Maddix Tools'}</h2>
+        <p id="aboutDesc" style="color:var(--muted-foreground);max-width:640px;line-height:1.7;font-size:.9375rem">${state.lang==='fa'?'مادیکس تولز یک ایستگاه کاری امنیتی مبتنی بر مرورگر است. این مجموعه شامل ابزارهای شناسایی، تولید پیلود، رمزنگاری، شبکه و ابزارهای کاربردی می‌باشد.':'Maddix Tools is a browser-based security workstation. Includes reconnaissance, payload generation, cryptography, networking, and utility tools.'}</p>
         <p style="margin-top:16px;color:var(--muted-foreground)">${state.lang==='fa'?'ساخته شده توسط':'Built by'} <a href="https://github.com/nima-ha" target="_blank" rel="noopener" style="text-decoration:underline;color:var(--action)">Nima Ha</a></p>
       </section>
     </main>
+    </div>
 
     <footer>${tr('footer')} &mdash; <a href="https://github.com/nima-ha/Maddix-tools" target="_blank" rel="noopener" style="text-decoration:underline">GitHub</a></footer>
 
@@ -574,11 +615,14 @@ function render() {
         <span style="font-weight:600;font-size:1.125rem">${tr('navTools')}</span>
         <button id="mobileMenuClose" class="btn btn-icon btn-ghost">✕</button>
       </div>
-      <nav style="display:flex;flex-direction:column;gap:4px">
+      <nav style="display:flex;flex-direction:column;gap:2px">
+        <div class="side-group" style="margin:0 4px 6px">${tr('navGroupMain')}</div>
         <a href="#" class="nav-link mobile-nav-link" data-section="home" style="display:flex;align-items:center;gap:10px;padding:10px 12px"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>${tr('navHome')}</a>
-        <a href="#" class="nav-link mobile-nav-link" data-section="tools" style="display:flex;align-items:center;gap:10px;padding:10px 12px"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>${tr('navTools')}</a>
         <a href="#" class="nav-link mobile-nav-link" data-section="ai-router" style="display:flex;align-items:center;gap:10px;padding:10px 12px"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m16 3 4 4-4 4"/><path d="M20 7H4"/><path d="m8 21-4-4 4-4"/><path d="M4 17h16"/></svg>${tr('navRouter')}</a>
+        <a href="#" class="nav-link mobile-nav-link" data-section="tools" style="display:flex;align-items:center;gap:10px;padding:10px 12px"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>${tr('navTools')}</a>
         <a href="#" class="nav-link mobile-nav-link" data-section="about" style="display:flex;align-items:center;gap:10px;padding:10px 12px"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>${tr('navAbout')}</a>
+        <div class="side-group" style="margin:14px 4px 6px">${tr('navGroupCats')}</div>
+        ${CATEGORIES.map(c => `<button type="button" class="side-cat" data-cat="${c}" style="padding:8px 12px"><span>${CATEGORY_EMOJI[c]}</span><span class="side-cat-label">${tr('categories.'+c)}</span></button>`).join('')}
       </nav>
     </div>
 
@@ -690,6 +734,11 @@ async function openTool(id) {
   }
 }
 
+// Expose helpers so tools can call back into the app
+window.Maddix = window.Maddix || {};
+window.Maddix.openTool = openTool;
+window.Maddix.closeDrawer = closeDrawer;
+
 function closeDrawer() {
   const drawer = document.getElementById('drawer');
   const overlay = document.getElementById('drawerOverlay');
@@ -703,13 +752,18 @@ function closeMobileMenu() {
   document.getElementById('mobileMenuOverlay')?.classList.add('hidden');
 }
 
+function syncSidebarCategories() {
+  document.querySelectorAll('.side-cat').forEach(b => {
+    b.classList.toggle('active', (b.dataset.cat||'') === (state.activeCategory||''));
+  });
+}
+
 // ── Events ─────────────────────────────────────────────
 function bindEvents() {
-  // Theme toggle
-  document.getElementById('themeBtn').addEventListener('click', () => {
-    if (state.theme === 'auto') state.theme = 'dark';
-    else if (state.theme === 'dark') state.theme = 'light';
-    else state.theme = 'auto';
+  // Theme toggle (switch)
+  const themeSwitch = document.getElementById('themeSwitch');
+  if (themeSwitch) themeSwitch.addEventListener('click', () => {
+    state.theme = state.isDark ? 'light' : 'dark';
     applyTheme();
     savePrefs();
   });
@@ -734,9 +788,29 @@ function bindEvents() {
       document.querySelectorAll('.cat-filter').forEach(b => b.classList.remove('active'));
       el.classList.add('active');
       state.activeCategory = el.dataset.cat || null;
+      syncSidebarCategories();
       renderToolGrid();
     });
   });
+
+  // Sidebar category buttons
+  document.querySelectorAll('.side-cat').forEach(el => {
+    el.addEventListener('click', () => {
+      document.querySelectorAll('.cat-filter').forEach(b => b.classList.remove('active'));
+      const cat = el.dataset.cat || '';
+      document.querySelectorAll('.cat-filter').forEach(b => { if ((b.dataset.cat||'') === cat) b.classList.add('active'); });
+      state.activeCategory = cat || null;
+      syncSidebarCategories();
+      renderToolGrid();
+      closeMobileMenu();
+      const target = document.getElementById('section-tools');
+      if (target) target.scrollIntoView({ behavior:'smooth', block:'start' });
+    });
+  });
+
+  // Topbar search button → open command palette
+  const topbarSearchBtn = document.getElementById('topbarSearchBtn');
+  if (topbarSearchBtn) topbarSearchBtn.addEventListener('click', () => openCmdPalette());
 
   // Nav links
   document.querySelectorAll('.nav-link').forEach(el => {
@@ -885,7 +959,8 @@ function applyTheme() {
   let isDark = t === 'dark' || (t === 'auto' && window.matchMedia('(prefers-color-scheme:dark)').matches);
   state.isDark = isDark;
   document.documentElement.classList.toggle('dark', isDark);
-  document.getElementById('themeBtn').textContent = isDark ? '☀️' : '🌙';
+  const sw = document.getElementById('themeSwitch');
+  if (sw) sw.setAttribute('aria-checked', isDark ? 'true' : 'false');
 }
 
 // ── Dir ────────────────────────────────────────────────
@@ -926,7 +1001,14 @@ function rerender() {
     heroTitle.textContent = tr('brand');
   }
   document.getElementById('heroTagline').textContent = tr('tagline');
+  const heroChipText = document.getElementById('heroChipText');
+  if (heroChipText) heroChipText.textContent = state.lang==='fa'?'ایستگاه کاری امنیتی مبتنی بر مرورگر':'Browser-based security workstation';
   document.getElementById('searchInput').placeholder = tr('search');
+  const tsLabel = document.querySelector('#topbarSearchBtn .ts-label');
+  if (tsLabel) tsLabel.textContent = tr('search');
+  const sideGroups = document.querySelectorAll('#sidebar .side-group');
+  if (sideGroups[0]) sideGroups[0].textContent = tr('navGroupMain');
+  if (sideGroups[1]) sideGroups[1].textContent = tr('navGroupCats');
   document.querySelectorAll('.nav-link, .mobile-nav-link').forEach(el => {
     const s = el.dataset.section;
     let label = '';
@@ -951,12 +1033,23 @@ function rerender() {
     if (!cat) el.textContent = state.lang==='fa'?'همه':'All';
     else el.textContent = CATEGORY_EMOJI[cat]+' '+tr('categories.'+cat);
   });
+  document.querySelectorAll('#sidebar .side-cat').forEach(el => {
+    const cat = el.dataset.cat;
+    const label = el.querySelector('.side-cat-label');
+    const count = el.querySelector('.side-cat-count');
+    if (label) label.textContent = cat ? tr('categories.'+cat) : tr('navAllTools');
+    if (count) count.textContent = cat ? TOOLS.filter(t=>t.cat===cat).length : TOOLS.length;
+  });
   document.querySelector('footer').innerHTML = tr('footer')+' &mdash; <a href="https://github.com/nima-ha/Maddix-tools" target="_blank" rel="noopener" style="text-decoration:underline">GitHub</a>';
   // About section
   const aboutTitle = document.getElementById('aboutTitle');
   const aboutDesc = document.getElementById('aboutDesc');
   if (aboutTitle) aboutTitle.textContent = state.lang==='fa'?'درباره مادیکس تولز':'About Maddix Tools';
   if (aboutDesc) aboutDesc.textContent = state.lang==='fa'?'مادیکس تولز یک ایستگاه کاری امنیتی مبتنی بر مرورگر است. شامل ابزارهای شناسایی، تولید پیلود، رمزنگاری، شبکه و اسکنر یکپارچه می‌باشد.':'Maddix Tools is a browser-based security workstation. Includes recon, payload, crypto, network, and unified scanner tools.';
+  const toolsTitle = document.getElementById('toolsSectionTitle');
+  const toolsDesc = document.getElementById('toolsSectionDesc');
+  if (toolsTitle) toolsTitle.textContent = state.lang==='fa'?'ابزارها':'All Tools';
+  if (toolsDesc) toolsDesc.textContent = state.lang==='fa'?'ابزارهای شبکه، پیلود، رمزنگاری و کاربردی را مرور کنید.':'Browse networking, payload, crypto and utility tools.';
   renderToolGrid();
   mountAiRouter();
 }
