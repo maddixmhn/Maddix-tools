@@ -1,0 +1,98 @@
+<template>
+    <pwa-install manual-apple="true" manual-chrome="true" disable-screenshots="true"
+        manifest-url="/manifest.webmanifest"></pwa-install>
+</template>
+
+<script setup>
+import { ref, onMounted } from 'vue';
+import '@khmyznikov/pwa-install';
+import { detectBrowser, detectOS } from '@/utils/system-detect.js';
+import { trackEvent } from '@/utils/analytics';
+
+
+// Define data
+const isDesktopChrome = ref(true);
+const isAndroidChrome = ref(false);
+const isMacSafari = ref(false);
+const isIosSafari = ref(false);
+const isOtherBrowser = ref(false);
+
+// Define methods
+const getBrowser = () => {
+    const os = detectOS();
+    const browser = detectBrowser();
+
+    const androidChrome = browser.isChrome && os.isAndroid;
+    const desktopChrome = browser.isChrome && !os.isAndroid && !os.isIOS;
+    const macSafari = os.isMac && browser.isSafari && !browser.isChrome;
+    const iosSafari = os.isIOS;
+
+    isAndroidChrome.value = androidChrome;
+    isDesktopChrome.value = desktopChrome;
+    isMacSafari.value = macSafari;
+    isIosSafari.value = iosSafari;
+    isOtherBrowser.value = !(androidChrome || desktopChrome || macSafari || iosSafari);
+}
+
+const popupCount = () => {
+    let currentCount = localStorage.getItem('pwaPopupCount') || 0;
+    currentCount = parseInt(currentCount, 10);
+    return currentCount;
+}
+
+const visitCount = () => {
+    let count = localStorage.getItem('pwaVisitCount') || 0;
+    count = parseInt(count, 10);
+    return count;
+}
+
+const showPWA = () => {
+    const pwaInstall = document.getElementsByTagName('pwa-install')[0];
+    if (!pwaInstall) return;
+
+    pwaInstall.isAppleMobilePlatform = isIosSafari.value;
+    pwaInstall.isAppleDesktopPlatform = isMacSafari.value;
+    pwaInstall.externalPromptEvent = window.ipcheckInstallPromptEvent || pwaInstall.externalPromptEvent;
+
+    if (!pwaInstall.isUnderStandaloneMode && pwaInstall.isInstallAvailable) {
+        pwaInstall.showDialog(true);
+        const totalPopupCount = popupCount() + 1;
+        localStorage.setItem('pwaPopupCount', totalPopupCount);
+        trackEvent('PWA', 'PWAPopup', 'Show');
+        pwaInstall.addEventListener('pwa-install-success-event', event => {
+            if (event.detail.message.includes('success')) {
+                trackEvent('PWA', 'PWAInstalled', 'Success');
+            }
+        });
+    }
+};
+
+onMounted(() => {
+    getBrowser();
+    const pwaInstall = document.getElementsByTagName('pwa-install')[0];
+    if (pwaInstall && window.ipcheckInstallPromptEvent) {
+        pwaInstall.externalPromptEvent = window.ipcheckInstallPromptEvent;
+    }
+
+    window.addEventListener('beforeinstallprompt', event => {
+        if (pwaInstall) {
+            pwaInstall.externalPromptEvent = event;
+        }
+    });
+
+    // Track how many times the user has loaded the app. We skip the prompt
+    // on the very first visit so a brand-new user isn't nagged immediately;
+    // from the second visit onward we fall back to the original popupCount
+    // gate (max 2 prompts ever).
+    const currentVisits = visitCount() + 1;
+    localStorage.setItem('pwaVisitCount', currentVisits);
+
+    if (currentVisits >= 2 && popupCount() < 2) {
+        setTimeout(() => {
+            showPWA();
+        }, 30000);
+    }
+});
+</script>
+
+<style scoped></style>

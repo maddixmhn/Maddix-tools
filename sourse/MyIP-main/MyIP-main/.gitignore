@@ -1,0 +1,68 @@
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+.claude
+tmp
+
+node_modules
+dist
+dist-ssr
+*.local
+
+# Editor directories and files
+.vscode/*
+!.vscode/extensions.json
+.idea
+.DS_Store
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+.env
+.vscode/extensions.json
+
+package-lock.json
+localtest
+
+.VSCodeCounter
+
+common/maxmind-db/.maxmind-update-*.json
+common/maxmind-db/.maxmind-update.lock
+common/maxmind-db/*.bak
+common/maxmind-db/*.next
+common/maxmind-db/*.mmdb
+
+# CAIDA datasets — Non-Commercial license, don't commit to public repo.
+common/as-org-db/*.txt
+common/as-rel-db/*.txt
+common/as-org-db/.caida-update-state.json
+common/as-rel-db/.caida-update-state.json
+common/as-org-db/.caida-update.lock
+common/as-rel-db/.caida-update.lock
+common/as-org-db/*.bak
+common/as-rel-db/*.bak
+common/as-org-db/*.next
+common/as-rel-db/*.next
+.learnings/
+docs/
+
+# Local Scripts
+scripts/
+
+# Site configuration
+public/sitemap.xml
+public/robots.txt
+public/llms.txt
+public/llms-full.txt
+public/tools/
+public/robots.txt
+public/ads.txt
+
+# Private AI context (per-machine, not for the public repo)
+local-context.md

@@ -1,0 +1,858 @@
+{
+  "user": {
+    "SignIn": "登录/注册",
+    "SignInWithGoogle": "使用 Google 登录",
+    "SignInWithGithub": "使用 GitHub 登录",
+    "SignOut": "登出",
+    "SignInToView": "登录后查看",
+    "SignInToUse": "请登录后使用",
+    "InvalidUserToken": "无效的用户 Token",
+    "MyAchievements": "我的成就",
+    "Fields": {
+      "User": "用户",
+      "CreatedAt": "创建于",
+      "LastLogin": "最后登录",
+      "Level": "用户等级",
+      "FunctionUses": "高级功能使用",
+      "Times": "次",
+      "Fetching": "获取中..."
+    },
+    "Level": {
+      "Standard": "标准用户",
+      "Premium": "高级用户",
+      "Owner": "管理员",
+      "Developer": "开发者",
+      "HonoraryMember": "荣誉用户"
+    },
+    "Benefits": {
+      "Title": "用户权益",
+      "Benefit": "权益",
+      "Note1": "作为一个开源产品，你使用 IPCheck.ing 的过程是免费的。",
+      "Note2": "但是，为了避免滥用，我们会限制一些功能。当你登录后，你将得到以下权益：",
+      "Benefit1": "当你使用 IPCheck.ing 作为 IP 数据解析源时，完整显示所有字段",
+      "Benefit2": "可以使用隐身测试",
+      "Benefit3": "可以使用深度 DNS 泄漏测试",
+      "Benefit4": "可以看到自己获得的成就勋章",
+      "Benefit5": "减少部分功能的访问限制",
+      "FootNote": "更多权益陆续开发中..."
+    },
+    "Achievements": {
+      "Title": "成就",
+      "Note": "在使用 IPCheck.ing 的过程中，你可能会触发一些成就，在这里，你可以看到你所有的成就。",
+      "Get": "已获得",
+      "GetCount": "已获得的成就数量",
+      "NotGet": "未获得",
+      "NotGetCount": "未获得的成就数量",
+      "FooterNote": "有时候，可能会有一些限时成就。",
+      "Congrats": "🎉 恭喜",
+      "CongratsMessage": "你获得了一个新成就！",
+      "NewAchievementIs": "新成就是：",
+      "Type": {
+        "IAmHuman": {
+          "Title": "有头有脸",
+          "Meet": "登录后使用 IPCheck.ing"
+        },
+        "BarelyEnough": {
+          "Title": "凑凑合合",
+          "Meet": "下载速度超过 100Mb/s"
+        },
+        "RapidPace": {
+          "Title": "快马加鞭",
+          "Meet": "下载速度超过 500Mb/s"
+        },
+        "TorrentFlow": {
+          "Title": "一泻千里",
+          "Meet": "下载速度超过 1000Mb/s"
+        },
+        "SteadyGoing": {
+          "Title": "普普通通",
+          "Meet": "上传速度超过 50Mb/s"
+        },
+        "TooFastTooSimple": {
+          "Title": "港记难追",
+          "Meet": "上传速度超过 200Mb/s"
+        },
+        "SwiftAscent": {
+          "Title": "日行千里",
+          "Meet": "上传速度超过 1000Mb/s"
+        },
+        "SurfaceCheck": {
+          "Title": "蜻蜓点水",
+          "Meet": "完成一项安全检查清单"
+        },
+        "HalfwayThere": {
+          "Title": "半半拉拉",
+          "Meet": "完成 50% 安全检查清单"
+        },
+        "FullySecured": {
+          "Title": "滴水不漏",
+          "Meet": "完成全部安全检查清单"
+        },
+        "JustInCase": {
+          "Title": "以防万一",
+          "Meet": "完成一次隐身测试"
+        },
+        "HiddenWell": {
+          "Title": "不露声色",
+          "Meet": "隐身测试中代理和 VPN 概率都是 0"
+        },
+        "SlipUp": {
+          "Title": "露出马脚",
+          "Meet": "隐身测试中代理或 VPN 概率大于 50%"
+        },
+        "CleverTrickery": {
+          "Title": "奇技淫巧",
+          "Meet": "查看了所有快捷键"
+        },
+        "EnergySaver": {
+          "Title": "省油的灯",
+          "Meet": "设置程序不自动运行"
+        },
+        "ResourceHog": {
+          "Title": "费油的车",
+          "Meet": "设置多次刷新可用性"
+        },
+        "MakingBigNews": {
+          "Title": "搞大新闻",
+          "Meet": "高级功能调用超过 1000 次"
+        },
+        "GenerousDonor": {
+          "Title": "慷慨解囊",
+          "Meet": "给 IPCheck.ing 项目捐赠过"
+        },
+        "ItIsOpen": {
+          "Title": "是开放的",
+          "Meet": "在封锁测试中，查询到了一个被封锁的网站"
+        },
+        "CuriousCat": {
+          "Title": "好奇的猫",
+          "Meet": "在 Whois 查询中，查询了 IPCheck.ing 的信息"
+        },
+        "CrossingTheWall": {
+          "Title": "八仙过墙",
+          "Meet": "在规则测试中，8 个测试的 IP 全部不相同"
+        }
+      }
+    }
+  },
+  "nav": {
+    "id": "nav",
+    "Title": "IPCheck.ing",
+    "Navigation": "导航",
+    "IPInfo": "IP 信息",
+    "Connectivity": "网络连通性",
+    "ServiceStatus": "服务可用性",
+    "WebRTC": "WebRTC 泄露测试",
+    "DNSLeakTest": "DNS 泄漏测试",
+    "SpeedTest": "网速测试",
+    "PingTest": "全球延迟",
+    "MTRTest": "MTR 测试",
+    "RuleTest": "分流测试",
+    "AdvancedTools": "高级工具",
+    "preferences": {
+      "title": "偏好设置",
+      "preferenceTips": "这些设置会保存在浏览器，方便下次使用。部分选项需要刷新页面方可生效。",
+      "colorScheme": "颜色方案",
+      "systemAuto": "跟随系统",
+      "colorLight": "白天",
+      "colorDark": "黑夜",
+      "ipSourcesToCheck": "IP 检测服务器数量",
+      "ipSourcesToCheckTips": "选择默认从多少个 IP 检测服务器获取 IP 信息。",
+      "appSettings": "程序设置",
+      "autoRun": "自动运行",
+      "autoRunTips": "关闭后，打开应用将只会进行本机 IP 检测，不会自动运行其它的测试。",
+      "simpleMode": "简洁模式",
+      "simpleModeTips": "隐藏每个模块的说明文字，适合已经了解本应用的用户。",
+      "connectivityMultipleTests": "多次刷新可用性检测",
+      "connectivityMultipleTestsTips": "开启多次刷新后，程序在启动时将运行多次检测，并显示最小延迟值。",
+      "popupConnectivityNotifications": "显示可用性检测气泡",
+      "popupConnectivityNotificationsTips": "开启后，将会在首次检测时以气泡形式提示可用性结果。",
+      "ipDB": "IP 解析数据源",
+      "ipDBTips": "你可以选择你默认使用的 IP 地理位置数据源，如果你选定的不可用，系统会依次使用后续的数据源。",
+      "language": "语言设置",
+      "languageTips": "刷新浏览器后生效。"
+    }
+  },
+  "securitychecklist": {
+    "Title": "安全检查清单",
+    "Note": "这是一份非常全面的网络安全检查清单，涵盖密码安全、浏览安全、移动设备安全等方面的内容。在当前环境下，信息泄露可能会导致重大的损失，因此，确保我们在连接互联网的时候，我们尽可能地保护自己的隐私、提高访问的安全性是很有必要的。",
+    "Note2": "这个清单罗列的内容非常多，你不一定要一次性检查完，进度会在浏览器里保存，你可以随时返回继续检查。",
+    "Progress": "检查进度",
+    "Item": "项目",
+    "Items": "个项目",
+    "Priority": "级别",
+    "Ignore": "忽略",
+    "alert-total": "安全检查一共有",
+    "alert-checked": "你已经完成了",
+    "alert-ignored": "被忽略",
+    "alert-unchecked": "个未进行检查。",
+    "Checked": "已检查",
+    "Ignored": "已忽略",
+    "Unchecked": "未检查",
+    "Basic": "基础",
+    "Optional": "可选",
+    "Essential": "必要",
+    "Advanced": "高级",
+    "Reset": "重置",
+    "ShowAll": "显示所有",
+    "ShowUnchecked": "显示未检查",
+    "ShowIgnored": "显示已忽略",
+    "ShowChecked": "显示已检查",
+    "Loading": "加载中..."
+  },
+  "curl": {
+    "Title": "命令行 API",
+    "Note1": "哟，原来你也喜欢用终端？",
+    "Note2_1": "你可以在终端里，通过",
+    "Note2_2": "命令获取本机的 IP 地址",
+    "Note3": "是可选路径，添加后可获取到 IP 的地理信息",
+    "Note4": "请使用你申请的 IPCheck.ing API 密钥",
+    "getIPv4": "获取本机 IPv4 地址",
+    "getIPv6": "获取本机 IPv6 地址",
+    "get6and4": "获取本机优先网络出口的 IP 地址",
+    "notAvailable": "此功能暂未开放，敬请期待"
+  },
+  "browserinfo": {
+    "Title": "浏览器信息",
+    "Note": "本页面展示两类浏览器信息：浏览器 User Agent 解析出来的基本信息，以及通过多项数据计算出来的浏览器指纹。浏览器指纹就像手掌的掌纹，当浏览器的信息暴露越多，你被网站识别的唯一性越高，也就是说，你越容易被网站跟踪到。有些时候，即使你切换到隐私模式，甚至更换浏览器，指纹可能也不会发生变化。",
+    "Note2": "浏览器指纹的计算的方法是多种多样的，不同的技术方案算法和结果不完全一致，我们在这里采用一种相对简单的方法进行计算。",
+    "browser": {
+      "Infos": "浏览器信息",
+      "browserName": "浏览器名称",
+      "engineName": "引擎",
+      "osName": "系统",
+      "deviceVendor": "制造商",
+      "cpuArchitecture": "CPU 架构",
+      "gpu": "GPU",
+      "cpuCores": "CPU 核心数",
+      "languages": "语言偏好",
+      "timezone": "时区",
+      "display": "显示规格",
+      "connection": "网络连接",
+      "touchPoints": "触控点数",
+      "doNotTrack": "请勿跟踪",
+      "doNotTrackOn": "已开启",
+      "doNotTrackOff": "已关闭",
+      "doNotTrackUnset": "未设置",
+      "pdfViewer": "PDF 阅读器",
+      "pdfViewerYes": "支持",
+      "pdfViewerNo": "不支持",
+      "cookieEnabled": "是否启用 Cookie",
+      "cookieEnabledTrue": "是",
+      "cookieEnabledFalse": "否"
+    },
+    "fingerprint": {
+      "Infos": "指纹信息",
+      "fingerprint": "指纹编码",
+      "changeOption": "你可以尝试变更用于计算浏览器指纹的数据，观察指纹的变化（记得打开隐私模式对照查看）。",
+      "browserTips": "有些浏览器（比如 Safari）为了保护用户不被跟踪，即使勾选相同的数据，每次计算都可能会得到不同的指纹值。"
+    },
+    "options": {
+      "audio": "音频",
+      "canvas": "画布",
+      "fonts": "字体",
+      "hardware": "硬件",
+      "locales": "语言",
+      "permissions": "权限",
+      "plugins": "插件",
+      "screen": "屏幕",
+      "system": "浏览器版本",
+      "webgl": "WebGL",
+      "math": "运算",
+      "intl": "国际化格式",
+      "mediaDevices": "媒体设备",
+      "speech": "语音合成",
+      "mathml": "MathML",
+      "webrtc": "WebRTC"
+    },
+    "components": {
+      "title": "指纹组件明细",
+      "note": "下方每一项都参与了上方哈希的计算。在上方 Fingerprint 区域里关掉对应开关即可将其从指纹中排除。"
+    },
+    "calError": "浏览器信息计算失败，请刷新重试。",
+    "calculating": "计算中..."
+  },
+  "invisibilitytest": {
+    "Title": "隐身测试",
+    "Note": "当你挂上代理或 VPN 之后，你访问的网站真的不知道你挂着代理吗？你真的隐身了么？我们会通过多种手段，尝试计算出你伪装后的漏洞，找到你正在使用代理的证据。尽管可能部分测试结果不完全准确，但本测试依然有较高的参考意义。",
+    "Note2": "点击运行后，系统将会运行一个脚本，通常在 10s 内将会完成所有的测试，在这个过程中，你的 IP 信息、浏览器信息等将会被收集并在后台进行分析。",
+    "fetchError": "无法获取测试结果",
+    "yourIP": "你的主测 IP 是",
+    "proxyScore": "代理概率",
+    "VPNScore": "VPN 概率",
+    "isProxy": "你可能使用了代理。",
+    "notProxy": "未发现你使用了代理。",
+    "isVPN": "你可能使用了 VPN。",
+    "notVPN": "未发现你使用了 VPN。",
+    "itemName": "测试项目",
+    "itemProxyResult": "测试结果",
+    "itemComment": "分析",
+    "agreement": "同意信息收集",
+    "blocklist": {
+      "proxy": {
+        "title": "代理名单",
+        "positive": "你的 IP 在代理名单中。",
+        "negative": "你的 IP 不在代理名单中。"
+      },
+      "vpn": {
+        "title": "VPN 名单",
+        "positive": "你的 IP 在 VPN 名单中。",
+        "negative": "你的 IP 不在 VPN 名单中。"
+      },
+      "vpnExitNode": {
+        "title": "VPN 出口节点",
+        "positive": "你的 IP 在 VPN 出口节点名单中。",
+        "negative": "你的 IP 不在 VPN 出口节点名单中。"
+      }
+    },
+    "tor": {
+      "title": "TOR 出口节点",
+      "positive": "你的 IP 在 TOR 出口节点中。",
+      "negative": "你的 IP 不在 TOR 出口名单中。"
+    },
+    "headers": {
+      "title": "HTTP 头信息",
+      "positive": "你的 HTTP 头信息中包含了代理信息，你可能正在使用代理。",
+      "negative": "你的 HTTP 头信息中没有代理信息。"
+    },
+    "datacenter": {
+      "title": "数据中心 IP",
+      "positive": "你的 IP 是数据中心 IP，普通用户的 IP 通常不会是数据中心。",
+      "negative": "你的 IP 不是数据中心 IP。"
+    },
+    "tcp": {
+      "title": "TCP 指纹",
+      "positive": "你发起连接的系统与你的电脑系统不同，你可能正在使用代理。尽管系统判断不一定准确，但可以肯定两个系统并不相同。",
+      "computer": "你的电脑系统是：",
+      "server": "你发起连接的系统可能是：",
+      "negative": "你发起连接的系统与你的电脑系统相同。"
+    },
+    "timezone": {
+      "title": "时区差异",
+      "positive": "你的时区与你的 IP 地理位置不匹配，你可能正在使用代理。",
+      "computer": "你的时区是：",
+      "server": "你的 IP 地理位置时区是：",
+      "negative": "你的时区与你的 IP 地理位置匹配。"
+    },
+    "net": {
+      "title": "网络行为",
+      "positive": "从客户端网络行为上发现你可能使用了代理或 VPN",
+      "negative": "从客户端网络行为上未发现你使用代理或 VPN 的证据。"
+    },
+    "webrtc": {
+      "title": "WebRTC 检测",
+      "positive": "WebRTC 发现你存在多个不同地区的 IP，你可能使用了代理或 VPN。",
+      "ipsAre": "IP 分别是：",
+      "negative": "WebRTC 检测未发现存在多个不同地区的 IP。"
+    },
+    "flow": {
+      "title": "流量特征",
+      "positive": "TCP/IP 流量特征发现你可能使用了代理或 VPN。",
+      "negative": "TCP/IP 流量特征未发现你使用代理或 VPN 的证据。"
+    },
+    "latencyVSWS": {
+      "title": "TCP vs WebSocket 延迟",
+      "positive": "TCP 延迟与 WebSocket 延迟差值较大，看起来你使用了代理或 VPN。",
+      "fromTCP": "TCP 延迟值：",
+      "fromWS": "WebSocket 延迟值：",
+      "negative": "TCP 延迟与 WebSocket 延迟差值不大，没有明显的使用了代理或 VPN 的证据。"
+    },
+    "latencyVSPing": {
+      "title": "TCP vs Ping 延迟",
+      "negative": "TCP 延迟与 Ping 差值不大，没有明显的使用了 VPN 的证据。",
+      "fromTCP": "TCP 延迟值：",
+      "fromPing": "Ping 延迟值：",
+      "positive": "TCP 延迟与 Ping 差值较大，看起来你使用了 VPN。"
+    },
+    "highlatency": {
+      "title": "高延迟分析",
+      "positive": "高延迟分析发现你可能使用了代理或 VPN。",
+      "negative": "高延迟分析未发现你使用代理或 VPN 的证据。"
+    }
+  },
+  "censorshipcheck": {
+    "Title": "封锁测试",
+    "Note": "检查目标网站在全球互联网审查较为严重的 4 个地区的可用性，包括：中国大陆、沙特阿拉伯、俄罗斯、土耳其。检查时会同时从互联网相对自由的地区进行相同的测试，以作为对照组进行校验。在一些地区，互联网审查有较为明确的法律条文，有些则相对含糊。",
+    "Note2": "请输入 URL 或域名，开始封锁测试：",
+    "Note3": "只有当同一个国家的所有服务器都无法访问时，才会判断为被封锁",
+    "Placeholder": "URL 或域名",
+    "Country": "地区",
+    "Status": "状态",
+    "City": "城市",
+    "Network": "网络",
+    "invalidURL": "无效的 URL 或域名",
+    "fetchError": "无法获取测试结果",
+    "isBlocked": "这个网站看起来在部分国家被封锁了，请参考上方的测试结果做最终判断。",
+    "notBlocked": "这个网站看起来没有被封锁了，请参考上方的测试结果做最终判断。",
+    "isDown": "无法判断这个网站是否被封锁，因为看起来它在全球许多位置都无法访问。如果你输入的地址是正确的，有可能网站本身出现了问题导致无法访问。",
+    "Timeout": "测试超时",
+    "TestGroup": "测试组",
+    "ControlGroup": "控制组"
+  },
+  "advancedtools": {
+    "OpenInNewTab": "在新标签页打开",
+    "BackToHome": "回到首页",
+    "Title": "高级工具",
+    "Note": "一些使用频率相对较低，但在进行网络测试时，非常有用的工具。",
+    "PingTestNote": "全球的 Ping 值测试",
+    "MTRTestNote": "全球的 MTR 路由测试",
+    "DNSResolverNote": "实时多渠道 DNS 解析",
+    "EnhancedDnsLeakTest": "捕获所有递归解析器，并分析 ECS 与 DNSSEC",
+    "RuleTestNote": "检查代理软件的规则设置",
+    "CensorshipCheck": "检查一个网站在某些国家是否被封锁",
+    "ServiceStatus": "查看知名 AI 与开发者服务的实时可用性，确认你遇到的中断是不是对方的故障",
+    "Whois": "对域名或 IP 进行 Whois 查询",
+    "InvisibilityTest": "猜猜看我是否知道你挂了代理",
+    "MacChecker": "查询物理地址的归属信息",
+    "BrowserInfo": "检阅浏览器信息和指纹",
+    "SecurityChecklist": "全面的数字生活安全检查清单"
+  },
+  "macchecker": {
+    "Title": "MAC 地址查询",
+    "Note": "查询一个物理地址（MAC 地址）所属的制造商、是否单播/多播、是否广域/区域等信息。支持使用完整的 12 位进行查询，也支持前缀查询。当然，你也可以用本查询工具来验证你生成的物理地址是否符合自己的需求。",
+    "Note2": "请输入一个物理地址，开始查询：",
+    "Placeholder": "F0:2F:4B:01:0A:AA",
+    "invalidMAC": "无效的物理地址",
+    "fetchError": "无法获取查询结果",
+    "company": "制造商",
+    "macPrefix": "物理地址前缀",
+    "address": "注册地址",
+    "country": "注册国家/地区",
+    "blockStart": "起始区块",
+    "blockEnd": "结束区块",
+    "blockSize": "区块大小",
+    "blockType": "区块类型",
+    "blockRange": "区块范围",
+    "isRand": "随机地址",
+    "isPrivate": "私有数据",
+    "isMulticast": "多播地址",
+    "isUnicast": "单播地址",
+    "isGlobal": "全球地址",
+    "isLocal": "本地地址",
+    "property": "地址属性",
+    "value": "值",
+    "manufacturer": "制造商信息"
+  },
+  "whois": {
+    "Title": "Whois 查询",
+    "Note": "Whois 查询是一种用于查询域名注册信息的服务。通过输入域名或 IP 地址，可以查询到域名的注册信息、注册商、注册日期、过期日期等信息。IP 与域名的 Whois 信息字段不完全一致。同时，部分比较小众的域名（TLD）可能无法查询到相关信息。",
+    "Note2": "请输入域名或 IP，开始进行查询：",
+    "Note3": "Whois 信息包含多种类型的字段，以下为原始文本信息",
+    "Placeholder": "域名或 IP",
+    "invalidURL": "无效的域名或 IP",
+    "fetchError": "无法获取查询结果或查询结果为空",
+    "Provider": "信息服务商"
+  },
+  "enhanceddnsleaktest": {
+    "Title": "深度 DNS 泄漏测试",
+    "Note": "你已经在首页的 DNS 泄漏测试中大致了解了当前是否存在 DNS 泄漏，以及 DNS 请求的出口地理归属。在这个深度测试里，我们会从更多维度进行检测：捕获更多 DNS 解析器出口 IP、检查这些解析器是否通过 ECS 把你真实 IP 段的前缀转发给了权威服务器、以及它们是否支持 DNSSEC，从而帮助你对自己的 DNS 链路安全性形成更完整的认识。",
+    "Note2": "点击「开始测试」即可开始，通常几秒内就能得到结果。我们会在后台发起多次 DNS 探测，由我们的权威 DNS 服务器捕获你所使用的递归解析器出口 IP，一次测试通常可以捕获 20–40 条记录。若完全没有捕获到解析器，可能是浏览器的 DNS 缓存吃掉了请求，稍等片刻再试一次即可。",
+    "Note3": "由于这是深度测试，页面里会出现一些较为专业的概念（例如 ECS、DNSSEC 等）。不用担心，运行测试后你可以参考下方的「字段说明」来了解每个字段的具体含义。",
+    "Run": "开始测试",
+    "RunAgain": "再测一次",
+    "RunningProbes": "正在发起 DNS 探测...",
+    "PollingResult": "正在收集结果...",
+    "FetchError": "获取 DNS 泄漏测试结果失败，请稍后重试。",
+    "Empty": "本次会话没有捕获到任何 DNS 解析器，可能是浏览器的 DNS 缓存吃掉了请求，请稍后重试。",
+    "TableTitle": "捕获到的 DNS 查询记录",
+    "DedupeToggle": "隐藏重复项",
+    "Flow": {
+      "Probing": "正在发起第 {current} / {total} 次探测...",
+      "Waiting": "等待递归 DNS 访问我们的权威服务器（通常 1–3 秒）。",
+      "Fetching": "正在获取捕获到的 DNS 查询记录...",
+      "Done": "测试已完成。"
+    },
+    "DnssecChip": {
+      "Signed": "已请求 DNSSEC 签名",
+      "Unsigned": "未请求 DNSSEC 签名",
+      "Validated": "DNSSEC 校验正常",
+      "CdSet": "DNSSEC 校验被禁用"
+    },
+    "Summary": {
+      "ResolverCount": "去重后的解析器数量",
+      "RawCount": "原始捕获记录数",
+      "DnssecPosture": "DNSSEC 状态",
+      "DnssecGood": "支持 DNSSEC —— 所有解析器都请求了签名，并且没有跳过校验。",
+      "DnssecNoDo": "较弱 —— 至少有一个解析器没有请求 DNSSEC 签名。",
+      "DnssecCdSet": "可疑 —— 至少有一个解析器要求跳过 DNSSEC 校验。",
+      "DnssecNone": "暂无数据。"
+    },
+    "Fields": {
+      "ResolverIP": "解析器 IP",
+      "Location": "归属地",
+      "ASN": "组织 / ASN",
+      "QueryType": "请求记录类型",
+      "Transport": "请求传输协议",
+      "ECS": "ECS"
+    },
+    "Legend": {
+      "Title": "字段说明",
+      "ResolverIP": "实际与我们权威 DNS 服务器通信的递归解析器出口 IP。如果你使用 VPN，把它的 ASN 与你当前 VPN 出口的 ASN 做对比，就能看出 DNS 请求是否绕过了 VPN 通道（即发生了泄漏）。",
+      "QueryType": "解析器向权威服务器请求的记录类型（A、AAAA、HTTPS 等）。浏览器通常会同时发起 A 与 AAAA 查询。",
+      "Transport": "DNS 默认走 UDP；出现 TCP 通常意味着响应过大，而响应过大往往是因为带上了 DNSSEC 相关记录。",
+      "ECS": "EDNS Client Subnet —— 部分递归 DNS 会在向上游转发查询时附带你真实 IP 的一段前缀（通常是 IPv4 的 /24 或 IPv6 的 /48）。这意味着你的 IP 段会被 DNS 链路上的权威服务器获知，可能用于 CDN 的就近调度，也可能在一定程度上削弱匿名性。",
+      "DO": "DNSSEC OK —— 标记为对勾时，表示递归解析器在查询时主动请求了 DNSSEC 签名，代表链路具备密码学校验能力；标记为叉时，表示本次查询未请求签名，响应在链路上被伪造或篡改时可能无法被察觉。",
+      "CD": "Checking Disabled —— 标记为对勾时，表示调用方没有要求跳过 DNSSEC 校验，递归解析器会进行正常的签名验证；标记为叉时，表示调用方显式要求跳过校验，即使签名对不上也会接受结果。正常情况下应该为对勾；如果出现叉，大多是由特定的调试工具或客户端的安全降级造成的，在极少数情况下也可能是链路上存在中间人篡改的征兆。"
+    }
+  },
+  "dnsresolver": {
+    "Title": "DNS 解析",
+    "Note": "在一些地区，某些运营商可能会因为政治原因或者商业原因，对一些域名进行污染，以至于直接进行访问的时候，无法返回正确的结果。使用 DNS 解析检查，将帮助你从全球各个知名的 DNS 厂商里检查域名的解析结果。在检测内置的 DNS 中，有一部分服务商来自中国，其 DNS 解析的结果可能会受到污染。请注意鉴别。",
+    "Note2": "请输入 URL 或域名，开始进行解析：",
+    "Placeholder": "URL 或域名",
+    "invalidURL": "无效的 URL 或域名",
+    "fetchError": "无法获取解析结果",
+    "Provider": "DNS 服务商",
+    "Result": "解析结果",
+    "Record": "记录"
+  },
+  "ruletest": {
+    "Title": "分流测试",
+    "Name": "检测",
+    "Note": "分流测试用于判断代理软件基于域名的规则设置是否正确。在进行测试之前，你需要先参考下方的卡片，在你的代理软件里对 IPCheck.ing 的 8 个不同的 URL 设置不同的域名分流规则。通常，设置规则可能会使用类似于：DOMAIN, ptest-3.ipcheck.ing, POLICY 这样的写法，具体写法不同的代理软件可能会有所不同。",
+    "StatusWait": "待检测",
+    "StatusError": "检测出错",
+    "Country": "代理地区",
+    "RefreshAll": "刷新所有"
+  },
+  "Tooltips": {
+    "RefreshIPCard": "刷新 IP 信息",
+    "SaveAsImage": "保存为图片",
+    "RefreshConnectivityTests": "刷新连通性测试",
+    "RefreshWebRTC": "刷新 WebRTC 泄露测试",
+    "RefreshDNSLeakTest": "刷新 DNS 泄漏测试",
+    "SpeedTestButton": "开始/暂停网速测试",
+    "ShowASNInfo": "显示 AS 详细信息",
+    "ShowASNHistory": "显示 ASN 历史",
+    "ShowASNConnectivity": "显示 ASN 连接图",
+    "CopyIP": "复制 IP 地址",
+    "CopySdpLog": "复制 SDP 日志",
+    "ViewOnMap": "在地图上查看位置",
+    "InfoMask": "隐藏信息",
+    "QueryIP": "查询 IP 信息",
+    "GithubLink": "查看源代码"
+  },
+  "ipInfos": {
+    "Title": "IP 信息",
+    "Notes": "程序会先从多个不同的来源（包含 IPv4 和 IPv6）检查你的 IP 地址，然后通过你选择的 IP 地理位置信息源查询对应的地理数据。如果当前 IP 栈只有 1 个，则没有数据的来源会显示为空。",
+    "Source": "IP 来源",
+    "Country": "地区",
+    "Region": "省份",
+    "City": "城市",
+    "ISP": "网络",
+    "ASN": "ASN",
+    "Coordinates": "经纬度",
+    "IPv4Error": "获取失败或不存在 IPv4 地址",
+    "IPv6Error": "获取失败或不存在 IPv6 地址",
+    "type": "类型",
+    "isProxy": "代理",
+    "qualityScore": "IP 质量分",
+    "qualityScoreUnknown": "未知分数",
+    "advancedUnlockCta": "为避免滥用，登录后可查看以下信息",
+    "ASNInfo": {
+      "trafficPercentage": "流量比例：",
+      "note": "此 AS 的相关数据：",
+      "asnName": "AS 名称：",
+      "asnOrgName": "AS 组织名称：",
+      "asnCountryCode": "AS 地区：",
+      "estimatedUsers": "估计用户数：",
+      "IPv4_Pct": "IPv4",
+      "IPv6_Pct": "IPv6",
+      "HTTP_Pct": "HTTP",
+      "HTTPS_Pct": "HTTPS",
+      "Desktop_Pct": "桌面设备",
+      "Mobile_Pct": "移动设备",
+      "Bot_Pct": "机器人",
+      "Human_Pct": "人类",
+      "moreData": "更多数据："
+    },
+    "ASNHistory": {
+      "announcedPrefixes": "公告前缀：",
+      "note": "该 IP 的历史 ASN 公告：",
+      "empty": "未找到该 IP 的历史路由数据。",
+      "error": "加载 ASN 历史失败。",
+      "seenBy": "RIPE RIS 可见度：{pct}% — 峰值 {peers} 个全表 peer"
+    },
+    "ASNConnectivity": {
+      "note": "该 AS 到全球 Tier 1 骨干网的上游路径：",
+      "empty": "未找到该 AS 的上游连接数据。",
+      "error": "加载 ASN 连接图失败。",
+      "expand": "放大",
+      "dialogTitle": "AS{asn} 的网络连接图",
+      "legendOrigin": "起源",
+      "legendTier1": "Tier 1 骨干",
+      "legendIntermediate": "中间 AS",
+      "zoomIn": "放大",
+      "zoomOut": "缩小",
+      "zoomReset": "重置缩放"
+    },
+    "advancedData": {
+      "proxyYes": "已识别为代理 / VPN",
+      "proxyMaybe": "疑似代理 / VPN",
+      "proxyNo": "未识别为代理",
+      "proxyUnknown": "未知类型",
+      "type": {
+        "Residential": "住宅线路",
+        "Wireless": "无线网络",
+        "Business": "商业线路",
+        "Hosting": "数据中心",
+        "unknownType": "未知类型"
+      },
+      "Nativeness": "原生性",
+      "NativeIPYes": "原生",
+      "NativeIPNo": "非原生",
+      "nativenessTooltip": "判断 ASN 的注册国家是否与 IP 的归属国家一致"
+    }
+  },
+  "serviceStatus": {
+    "Title": "服务可用性",
+    "Note": "当你打不开某些服务的时候，可能并不是你的问题，而是这些服务出故障了。当前，人们大量使用 AI 产品，并在 AI 产品没有回复的时候，不确定是自己的问题还是服务的问题。本板块展示一些知名 AI 服务的实时可用状态，展开卡片可查看各子服务的状态与最近的事故。",
+    "Refresh": "刷新服务状态",
+    "LastChecked": "最后检查",
+    "AllOperational": "所有系统正常",
+    "ComponentsTitle": "服务项",
+    "IncidentsTitle": "最近事故",
+    "NoComponents": "暂无服务详情。",
+    "NoRecentIncidents": "近期无事故。",
+    "Loading": "加载中…",
+    "Checking": "查询中…",
+    "IncidentsError": "无法加载事故信息。",
+    "ComponentsError": "无法加载服务项。",
+    "indicator": {
+      "minor": "部分异常",
+      "major": "重大故障",
+      "critical": "严重故障",
+      "maintenance": "维护中",
+      "unknown": "状态获取失败"
+    },
+    "component": {
+      "operational": "正常",
+      "degraded_performance": "性能下降",
+      "partial_outage": "部分中断",
+      "major_outage": "重大中断",
+      "under_maintenance": "维护中"
+    },
+    "incidentStatus": {
+      "investigating": "调查中",
+      "identified": "已定位",
+      "monitoring": "监控中",
+      "resolved": "已解决",
+      "postmortem": "复盘",
+      "scheduled": "已计划",
+      "in_progress": "进行中",
+      "verifying": "验证中",
+      "completed": "已完成"
+    }
+  },
+  "connectivity": {
+    "Title": "网络连通性",
+    "Note": "本测试用于测试你是否能够连通到某个网站。测试方法是通过加载对应网站上的小图片进行的。延迟值仅供参考，实际会更小。你可以添加其它你常用的网站到测试列表中，方便快速测试。",
+    "ServiceStatusBanner": {
+      "Title": "某个服务打不开？",
+      "Note": "如果上面 ChatGPT、Claude 等 AI 产品测试失败，未必是你的网络问题——可能是服务本身挂了。看看它们的实时可用性和近期故障。",
+      "CTA": "打开服务可用性"
+    },
+    "StatusWait": "待检测",
+    "StatusAvailable": "可用",
+    "StatusUnavailable": "不可用",
+    "StatusTimeout": "超时或不可用",
+    "checking": "检查中...",
+    "minTestTime": "最小测试时间：",
+    "RefreshThisTest": "刷新此测试",
+    "RoundCount": "第 {n} 次：",
+    "addCustom": {
+      "AddCard": "添加测试",
+      "Title": "添加自定义测试",
+      "Hint": "通过 HTTPS 加载站点 favicon 进行测试，部分站点可能无法以这种方式测试。自定义测试会保存在浏览器本地。",
+      "NameLabel": "名称",
+      "NamePlaceholder": "例如：维基百科",
+      "UrlLabel": "URL",
+      "UrlPlaceholder": "例如：wikipedia.org",
+      "Add": "添加",
+      "Remove": "移除测试",
+      "NameRequired": "请输入名称",
+      "UrlRequired": "请输入 URL",
+      "InvalidUrl": "这看起来不是一个有效的 URL",
+      "LimitReached": "自定义测试已达到 10 个上限"
+    }
+  },
+  "webrtc": {
+    "id": "webrtc",
+    "Title": "WebRTC 泄露测试",
+    "Name": "WebRTC 连接",
+    "Note": "WebRTC 往往通过 UDP 直连进行建立，如果测试返回了真实 IP，则意味着你的代理设置没有覆盖这些连接。除了检测你连接 WebRTC 时所使用的 IP，我们还会检测你的 NAT 类型。然而，NAT 类型的检测并不是 100% 准确的，仅供参考。",
+    "StatusWait": "待检测",
+    "StatusError": "连接错误",
+    "SdpLog": "SDP 日志",
+    "NATType": {
+      "srflx": "端口限制型或对称型",
+      "prflx": "端口限制型",
+      "relay": "对称型",
+      "host": "全锥型",
+      "unknown": "未知类型"
+    }
+  },
+  "dnsleaktest": {
+    "Name": "DNS 出口检测",
+    "Title": "DNS 泄漏测试",
+    "Note": "DNS 泄露（DNS Leaks）的意思是，当你挂上 VPN/代理后，你解析域名时，依然通过当地的运营商进行解析，这时就有 DNS 泄露的风险。",
+    "Note2": "泄露测试的方法是通过访问新生成的域名，检测你是通过哪个地区的 DNS 出口进行解析，如果返回的出口区域和你当地的运营商区域相同，则有 DNS 泄露风险，你可能需要修改 VPN/代理设置。",
+    "EndpointCountry": "出口地区",
+    "StatusWait": "待检测",
+    "StatusError": "测试出错",
+    "EnhancedBanner": {
+      "Title": "想做更深入的检查？",
+      "Note": "如果想进一步了解你正在使用的所有递归解析器是谁、它们的 ASN 归属、是否通过 ECS 把你真实 IP 的前缀转发给了上游、以及是否启用了 DNSSEC 校验，可以打开下方的「深度 DNS 泄漏测试」。",
+      "CTA": "打开深度 DNS 泄漏测试"
+    }
+  },
+  "speedtest": {
+    "Title": "网速测试",
+    "Note": "将从 Cloudflare 使用边缘网络进行速度测试。你可以根据需要，选择测速时下载和上传的数据包大小。测速过程中，会进行 4 次数据包上传与下载，请注意流量消耗。考虑到 Cloudflare 并非在全球每一个国家都部署边缘节点，测速结果仅供参考，实际速度可能更快。",
+    "Download": "下载",
+    "Upload": "上传",
+    "Latency": "延迟",
+    "Jitter": "抖动",
+    "loadedLatency": "满载延迟：",
+    "videoStreaming": "在线视频：",
+    "gaming": " ，在线游戏：",
+    "rtc": " ，视频会议：",
+    "score": "根据网速测试，得出以下质量分数：",
+    "connectionFrom": "已完成从你的机器，IP：",
+    "connectionTo": "与测速服务器：",
+    "connectionEnd": " 的测试。",
+    "quality": {
+      "bad": "差",
+      "poor": "较差",
+      "average": "一般",
+      "good": "良好",
+      "great": "优秀"
+    }
+  },
+  "pingtest": {
+    "EnterIPLabel": "输入要测试的 IP",
+    "EnterIPPlaceholder": "例如 1.1.1.1",
+    "UseStored": "使用已知 IP",
+    "id": "pingtest",
+    "Title": "全球延迟测试",
+    "Note": "Ping 测试是一种网络工具，用于测量数据包从你的设备到特定目标（在这里是我们分布在全球各个大洲和地区的服务器）的往返时间。是评估网络性能的关键指标。",
+    "Note2": "在这个过程中，IPCheck.ing 会从世界各地的服务器发送小数据包到你的 IP 地址，然后测量这些数据包从服务器发送到你的设备，再返回服务器所需的时间。通过这些不同地理位置的 Ping 测试，你可以获得一个全面的视图，了解你的设备与全球网络连接的速度和稳定性。",
+    "Note3": "请选取你的 IP 地址进行测试：",
+    "SelectIP": "选择一个 IP 地址",
+    "Region": "地区",
+    "MinDelay": "最小延迟（ms）",
+    "MaxDelay": "最大延迟（ms）",
+    "AvgDelay": "平均延迟（ms）",
+    "TotalPackets": "总包数",
+    "PacketLoss": "丢包率",
+    "ReceivedPackets": "收到",
+    "DroppedPackets": "丢失",
+    "Error": "测试失败，看起来你的 IP 不允许进行 Ping 测试。"
+  },
+  "mtrtest": {
+    "EnterIPLabel": "输入要测试的 IP",
+    "EnterIPPlaceholder": "例如 1.1.1.1",
+    "UseStored": "使用已知 IP",
+    "Title": "MTR 测试",
+    "Note": "MTR (My Traceroute) 测试会从遍布全球不同大洲和地区的服务器出发，对你的 IP 地址进行详细的路由跟踪。MTR 结合了传统 traceroute 和 ping 命令的功能，能够实时地诊断网络连接的质量和性能。",
+    "Note2": "这个过程涵盖了从各个地理位置到你的网络环境的完整路径，提供关于每一跳的延迟和数据包丢失信息。无论是路由路径的拥堵、某个特定节点的延迟问题，还是数据包在传输过程中的丢失，MTR 测试都能提供关键的诊断信息。",
+    "Note3": "请选取你的 IP 地址进行测试：",
+    "SelectIP": "选择一个 IP 地址",
+    "Region": "地区",
+    "Error": "测试失败，看起来你的 IP 不允许进行 MTR 测试。"
+  },
+  "ipcheck": {
+    "Title": "IP 查询",
+    "Placeholder": "例如 1.1.1.1",
+    "Error": "请输入有效的 IPv4 或 IPv6 地址。",
+    "NoData": "无法查询到该 IP 的信息。可能是不可路由地址（如 0.0.0.0、私有地址）或数据源没有该 IP 的记录。"
+  },
+  "alert": {
+    "refreshEverythingMessage": "正在刷新所有数据，请等待...",
+    "refreshEverythingTitle": "正在刷新",
+    "OhNo": "糟糕！",
+    "Congrats": "恭喜呀！",
+    "OhNo_Message": "连通性检测没有通过，部分网站无法访问。",
+    "Congrats_Message": "所有的连通性检测均通过，你可以访问所有网站。",
+    "maskedInfoTitle": "IP 信息已隐藏",
+    "maskedInfoMessage": "IP 信息已隐藏。分享截图不会泄露你的 IP 信息。",
+    "unmaskedInfoTitle": "IP 信息已显示",
+    "unmaskedInfoMessage": "IP 信息已显示。分享截图时请注意隐私。",
+    "SignInFailed": "登录失败",
+    "SignInFailedReason": "原因"
+  },
+  "shortcutKeys": {
+    "GoToTop": "回到顶部",
+    "GoToBottom": "回到底部",
+    "ToggleDarkMode": "切换深色模式",
+    "RefreshEverything": "刷新所有数据",
+    "RefreshIPCard": "刷新某张 IP 卡片",
+    "RefreshConnectivityTests": "刷新连通性测试",
+    "RefreshWebRTC": "刷新 WebRTC 泄露测试",
+    "RefreshDNSLeakTest": "刷新 DNS 泄漏测试",
+    "SpeedTestButton": "开始/暂停网速测试",
+    "PingTest": "打开全球延迟测试面板",
+    "MTRTest": "打开全球路由测试面板",
+    "RuleTest": "打开规则测试面板",
+    "DNSResolver": "打开 DNS 解析器面板",
+    "IPCheck": "IP 查询",
+    "ToggleInfoMask": "切换信息隐藏",
+    "Help": "显示快捷键",
+    "HelpNote": "使用快捷键的人，是喜欢效率的人，你真棒！",
+    "GoNext": "下一张卡片",
+    "GoPrevious": "上一张卡片",
+    "OpenHighlightedTool": "打开选中的高级工具",
+    "RefreshRuleTests": "刷新规则测试",
+    "CensorshipCheck": "打开封锁测试面板",
+    "Preferences": "打开偏好设置面板",
+    "About": "打开关于页面",
+    "Whois": "打开 Whois 查询面板",
+    "ServiceStatus": "打开服务可用性面板",
+    "InvisibilityTest": "打开隐身测试面板",
+    "EnhancedDnsLeakTest": "打开深度 DNS 泄漏测试面板",
+    "MacChecker": "打开物理地址查询面板",
+    "BrowserInfo": "打开浏览器信息面板",
+    "fullScreenAdvancedTools": "全屏展开高级工具面板",
+    "Curl": "命令行 API",
+    "SecurityChecklist": "打开安全检查清单"
+  },
+  "page": {
+    "title": "IPCheck.ing - 查看我的 IP 地址及归属地 - IP 泄露检测 - DNS 泄露检测 - IP 质量检查 - 网速测试 - Jason Ng 阿禅开源作品",
+    "description": "好用和开源的全能 IP 工具箱。轻松查看你的 IP 地址和信息、检查 IP 泄露、DNS 与 WebRTC 泄露检查、查看 IP 质量分数、浏览器指纹检查。还有网速测试、全球延迟测试、MTR 测试、Whois 查询等。",
+    "keywords": "我的IP,IP工具,IP查询,IP泄露检测,DNS泄露检测,IP质量检测,WebRTC泄露检测,浏览器指纹检测,网速测试,全球延迟测试,MTR测试,DNS查询,Whois搜索",
+    "footerLink": "https://github.com/jason5ng32/MyIP",
+    "copyRightName": "Originally from ",
+    "copyRightLink": "https://ipcheck.ing",
+    "copyRightLinkName": "IPCheck.ing"
+  },
+  "helpModal": {
+    "Title": "快捷键"
+  },
+  "about": {
+    "Title": "关于",
+    "product1": "IPCheck.ing 是一个免费的 IP 工具箱，可以帮助你查看自己的 IP 信息，检测网站的可用性，查看 DNS 出口信息，进行网速测试，全球延迟测试，MTR 测试等。",
+    "product2": "这是一个开源项目，你可以点击页面底部的 GitHub 图标查看源代码。",
+    "product3": "最早的时候，这是我的一个用来学习 Vue.js 和学习如何使用 AI 写代码的练手项目，后来在 GitHub 上获得的星星数量越来越多，于是我进行了大量的重构和添加了许多非常有用的功能，希望你会喜欢。",
+    "meTitle": "关于我",
+    "me1": "我的名字叫阿禅，通常在网上使用 Jason Ng 作为英文名，我并不是一个专业的程序员，但是我喜欢编程，我喜欢开源，我喜欢分享。",
+    "me2": "在大多数时候，我是一名产品经理、一名博客作者、一个摩托车骑士以及一名极客。",
+    "me3": "你可以在下面的链接里找到我更详细的介绍：",
+    "contactTitle": "联系我",
+    "contact": "如果你有任何问题或建议，请通过邮箱联系我： jason[AT]kenengba.com",
+    "personal": "个人网站",
+    "blog": "可能吧博客",
+    "retiremoney": "躺平计算器",
+    "twitter": "Twitter",
+    "Sponsor": "赞助"
+  },
+  "specialthanks": {
+    "Title": "特别鸣谢",
+    "Note1": "这个项目之所以能够完成，少不了一些热心的人和组织的支持和帮助，以及给予灵感或开放的代码人们。非常感谢他们："
+  },
+  "changelog": {
+    "Title": "更新日志",
+    "add": "新增",
+    "improve": "优化",
+    "fix": "修复"
+  }
+}
