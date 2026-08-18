@@ -73,7 +73,7 @@ importers:
         version: 1.11.13
       http-proxy-middleware:
         specifier: ^4.1.0
-        version: 4.1.0
+        version: 4.1.0(supports-color@5.5.0)
       maxmind:
         specifier: ^5.0.6
         version: 5.0.6
@@ -99,8 +99,8 @@ importers:
         specifier: ^3.6.0
         version: 3.6.0
       tar:
-        specifier: ^7.5.16
-        version: 7.5.16
+        specifier: ^7.5.21
+        version: 7.5.21
       tw-animate-css:
         specifier: ^1.4.0
         version: 1.4.0
@@ -140,7 +140,7 @@ importers:
         version: 6.0.7(vite@8.0.16(@types/node@24.1.0)(jiti@2.7.0)(yaml@2.9.0))(vue@3.5.38)
       code-inspector-plugin:
         specifier: ^1.6.0
-        version: 1.6.0
+        version: 1.6.0(supports-color@5.5.0)
       nodemon:
         specifier: ^3.1.14
         version: 3.1.14
@@ -541,8 +541,8 @@ packages:
   '@kurkle/color@0.3.4':
     resolution: {integrity: sha512-M5UknZPHRu3DEDWoipU6sE8PdkZ6Z/S+v4dD+Ke8IaNlpdSQah50lz1KtcFBa2vsdOnwbbnxJwVM4wty6udA5w==}
 
-  '@lit-labs/ssr-dom-shim@1.5.1':
-    resolution: {integrity: sha512-Aou5UdlSpr5whQe8AA/bZG0jMj96CoJIWbGfZ91qieWu5AWUMKw8VR/pAkQkJYvBNhmCcWnZlyyk5oze8JIqYA==}
+  '@lit-labs/ssr-dom-shim@1.6.0':
+    resolution: {integrity: sha512-VHb0ALPMTlgKjM6yIxxoQNnpKyUKLD04VzeQdsiXkMqkvYlAHxq9glGLmgbb889/1GsohSOAjvQYoiBppXFqrQ==}
 
   '@lit/react@1.0.8':
     resolution: {integrity: sha512-p2+YcF+JE67SRX3mMlJ1TKCSTsgyOVdAwd/nxp3NuV1+Cb6MWALbN6nT7Ld4tpmYofcE5kcaSY1YBB9erY+6fw==}
@@ -1528,8 +1528,8 @@ packages:
   lit-element@4.2.2:
     resolution: {integrity: sha512-aFKhNToWxoyhkNDmWZwEva2SlQia+jfG0fjIWV//YeTaWrVnOxD89dPKfigCUspXFmjzOEUQpOkejH5Ly6sG0w==}
 
-  lit-html@3.3.2:
-    resolution: {integrity: sha512-Qy9hU88zcmaxBXcc10ZpdK7cOLXvXpRoBxERdtqV9QOrfpMZZ6pSYP91LhpPtap3sFMUiL7Tw2RImbe0Al2/kw==}
+  lit-html@3.3.3:
+    resolution: {integrity: sha512-el8M6jK2o3RXBnrSHX3ZKrsN8zEV63pSExTO1wYJz7QndGYZ8353e2a5PPX+qHe2aGayfnchQmkAojaWAREOIA==}
 
   lit@3.3.2:
     resolution: {integrity: sha512-NF9zbsP79l4ao2SNrH3NkfmFgN/hBYSQo90saIVI1o5GpjAdCPVstVzO1MrLOakHoEhYkrtRjPK6Ob521aoYWQ==}
@@ -1935,8 +1935,8 @@ packages:
     resolution: {integrity: sha512-uxc/zpqFg6x7C8vOE7lh6Lbda8eEL9zmVm/PLeTPBRhh1xCgdWaQ+J1CUieGpIfm2HdtsUpRv+HshiasBMcc6A==}
     engines: {node: '>=6'}
 
-  tar@7.5.16:
-    resolution: {integrity: sha512-56adEpPMouktRlBLXiaYFFzZ/3+JXa8P9n7WbR+ibIjtviN55mEaOkiysCnPnWm+7kkui1Dn8J9l+g6zV8731w==}
+  tar@7.5.21:
+    resolution: {integrity: sha512-XdhtCvlMywwxpCW8YEq3lOXBJpUPTR2OHHcwLPO3HwsJqOHa2Ok/oJ7ruGzp+JrKoRPVCzJwAdEjqLW/vNRPHA==}
     engines: {node: '>=18'}
 
   thread-stream@4.0.0:
@@ -2248,45 +2248,45 @@ snapshots:
 
   '@cloudflare/speedtest@1.10.1': {}
 
-  '@code-inspector/core@1.6.0':
+  '@code-inspector/core@1.6.0(supports-color@5.5.0)':
     dependencies:
       '@vue/compiler-dom': 3.5.35
       chalk: 4.1.2
       dotenv: 16.6.1
       launch-ide: 1.4.3
-      portfinder: 1.0.38
+      portfinder: 1.0.38(supports-color@5.5.0)
     transitivePeerDependencies:
       - supports-color
 
   '@code-inspector/esbuild@1.6.0':
     dependencies:
-      '@code-inspector/core': 1.6.0
+      '@code-inspector/core': 1.6.0(supports-color@5.5.0)
     transitivePeerDependencies:
       - supports-color
 
   '@code-inspector/mako@1.6.0':
     dependencies:
-      '@code-inspector/core': 1.6.0
+      '@code-inspector/core': 1.6.0(supports-color@5.5.0)
     transitivePeerDependencies:
       - supports-color
 
   '@code-inspector/turbopack@1.6.0':
     dependencies:
-      '@code-inspector/core': 1.6.0
+      '@code-inspector/core': 1.6.0(supports-color@5.5.0)
       '@code-inspector/webpack': 1.6.0
     transitivePeerDependencies:
       - supports-color
 
   '@code-inspector/vite@1.6.0':
     dependencies:
-      '@code-inspector/core': 1.6.0
+      '@code-inspector/core': 1.6.0(supports-color@5.5.0)
       chalk: 4.1.1
     transitivePeerDependencies:
       - supports-color
 
   '@code-inspector/webpack@1.6.0':
     dependencies:
-      '@code-inspector/core': 1.6.0
+      '@code-inspector/core': 1.6.0(supports-color@5.5.0)
     transitivePeerDependencies:
       - supports-color
 
@@ -2727,7 +2727,7 @@ snapshots:
 
   '@kurkle/color@0.3.4': {}
 
-  '@lit-labs/ssr-dom-shim@1.5.1': {}
+  '@lit-labs/ssr-dom-shim@1.6.0': {}
 
   '@lit/react@1.0.8(@types/react@19.2.14)':
     dependencies:
@@ -2735,7 +2735,7 @@ snapshots:
 
   '@lit/reactive-element@2.1.2':
     dependencies:
-      '@lit-labs/ssr-dom-shim': 1.5.1
+      '@lit-labs/ssr-dom-shim': 1.6.0
 
   '@lucide/vue@1.18.0(vue@3.5.38)':
     dependencies:
@@ -3250,9 +3250,9 @@ snapshots:
 
   clsx@2.1.1: {}
 
-  code-inspector-plugin@1.6.0:
+  code-inspector-plugin@1.6.0(supports-color@5.5.0):
     dependencies:
-      '@code-inspector/core': 1.6.0
+      '@code-inspector/core': 1.6.0(supports-color@5.5.0)
       '@code-inspector/esbuild': 1.6.0
       '@code-inspector/mako': 1.6.0
       '@code-inspector/turbopack': 1.6.0
@@ -3547,7 +3547,7 @@ snapshots:
 
   http-parser-js@0.5.10: {}
 
-  http-proxy-middleware@4.1.0:
+  http-proxy-middleware@4.1.0(supports-color@5.5.0):
     dependencies:
       debug: 4.4.3(supports-color@5.5.0)
       httpxy: 0.5.3
@@ -3665,11 +3665,11 @@ snapshots:
 
   lit-element@4.2.2:
     dependencies:
-      '@lit-labs/ssr-dom-shim': 1.5.1
+      '@lit-labs/ssr-dom-shim': 1.6.0
       '@lit/reactive-element': 2.1.2
-      lit-html: 3.3.2
+      lit-html: 3.3.3
 
-  lit-html@3.3.2:
+  lit-html@3.3.3:
     dependencies:
       '@types/trusted-types': 2.0.7
 
@@ -3677,7 +3677,7 @@ snapshots:
     dependencies:
       '@lit/reactive-element': 2.1.2
       lit-element: 4.2.2
-      lit-html: 3.3.2
+      lit-html: 3.3.3
 
   local-pkg@1.1.2:
     dependencies:
@@ -3877,7 +3877,7 @@ snapshots:
       exsolve: 1.0.8
       pathe: 2.0.3
 
-  portfinder@1.0.38:
+  portfinder@1.0.38(supports-color@5.5.0):
     dependencies:
       async: 3.2.6
       debug: 4.4.3(supports-color@5.5.0)
@@ -4136,7 +4136,7 @@ snapshots:
 
   tapable@2.3.3: {}
 
-  tar@7.5.16:
+  tar@7.5.21:
     dependencies:
       '@isaacs/fs-minipass': 4.0.1
       chownr: 3.0.0
